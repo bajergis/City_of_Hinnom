@@ -2,12 +2,52 @@ declare namespace CityOfHinnom {
     export import ƒ = FudgeCore;
     export import ƒS = FudgeStory;
     let transitions: {
-        puzzle: {
+        bismuth: {
             duration: number;
             alpha: string;
             edge: number;
         };
         wipe: {
+            duration: number;
+            alpha: string;
+            edge: number;
+        };
+        static: {
+            duration: number;
+            alpha: string;
+            edge: number;
+        };
+        fuzzy: {
+            duration: number;
+            alpha: string;
+            edge: number;
+        };
+        swirl: {
+            duration: number;
+            alpha: string;
+            edge: number;
+        };
+        tv: {
+            duration: number;
+            alpha: string;
+            edge: number;
+        };
+        ripple: {
+            duration: number;
+            alpha: string;
+            edge: number;
+        };
+        jigsaw: {
+            duration: number;
+            alpha: string;
+            edge: number;
+        };
+        swoosh: {
+            duration: number;
+            alpha: string;
+            edge: number;
+        };
+        wet: {
             duration: number;
             alpha: string;
             edge: number;
@@ -48,6 +88,9 @@ declare namespace CityOfHinnom {
         confirmSFX: string;
         selectSFX: string;
         lily: string;
+        page1: string;
+        page2: string;
+        page3: string;
     };
     let locations: {
         AlphaGoodEnd: {
@@ -234,7 +277,9 @@ declare namespace CityOfHinnom {
         hasMetIris: boolean;
         hasReadSomething: boolean;
         ownsCameraRoll: boolean;
+        ownsIrisLetter2: boolean;
         ownsBookmark: boolean;
+        ownsAlphaLetter2: boolean;
         ownsChildhoodPicture: boolean;
         alphaSkip: boolean;
         irisSkip: boolean;

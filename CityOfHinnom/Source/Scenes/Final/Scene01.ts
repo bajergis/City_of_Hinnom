@@ -6,9 +6,8 @@ namespace CityOfHinnom {
 
         let text = {
             Narrator: {
-                T0001: "This café seemed pretty inviting",
-                //T0002: "As I opened the door and the typical bell signals that a customer entered, I was greeted by a timid voice. A red haired girl with a camera around her neck stood behind the counter, carefully grinding coffee beans as if she wasn’t sure how much pressure to apply. When she saw me, her eyes lit up a bit.",
-                T0003: "As much as I enjoy coffee, I don't think that it's such a good idea to waste my time like this. I should press on and find some other clues about this place.",
+                T0001: "This café appeared pretty inviting. The lights were on, so who knows, maybe I’ll find someone else.",
+                T0002: "As much as I enjoy coffee, I don't think that it's such a good idea to waste my time like this. I should press on and find some other clues about this place.",
             }
         }
 
@@ -36,7 +35,7 @@ namespace CityOfHinnom {
                 return "scene02";
             case goIntoCafeChoice.answerWalkOn:
                 // Go to Scene 03
-                await ƒS.Speech.tell(characters.narrator, text.Narrator.T0003);
+                await ƒS.Speech.tell(characters.narrator, text.Narrator.T0002);
                 ƒS.Speech.clear();
                 break;
         }

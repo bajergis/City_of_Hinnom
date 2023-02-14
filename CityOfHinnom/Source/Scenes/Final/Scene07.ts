@@ -27,16 +27,20 @@ namespace CityOfHinnom {
             }
         }
 
-        await ƒS.Location.show(locations.CityStreetNight);
-        await ƒS.update(transitions.swirl.duration, transitions.swirl.alpha, transitions.swirl.edge);
-        ƒS.Sound.play(sound.terror2, 1, true);
-        await ƒS.Speech.tell(characters.narrator, text.Narrator.T0001);
-        await ƒS.Speech.tell(characters.narrator, text.Narrator.T0002);
-        await ƒS.Speech.tell(characters.narrator, text.Narrator.T0003);
+        if (dataForSave.ownsLilyLetter2) {
+
+        } else {
+            await ƒS.Location.show(locations.CityStreetNight);
+            await ƒS.update(transitions.swirl.duration, transitions.swirl.alpha, transitions.swirl.edge);
+            ƒS.Sound.play(sound.terror2, 1, true);
+            await ƒS.Speech.tell(characters.narrator, text.Narrator.T0001);
+            await ƒS.Speech.tell(characters.narrator, text.Narrator.T0002);
+            await ƒS.Speech.tell(characters.narrator, text.Narrator.T0003);
+        }
         await ƒS.Location.show(locations.OutsideApartment);
         await ƒS.update(transitions.fuzzy.duration, transitions.fuzzy.alpha, transitions.fuzzy.edge);
         await ƒS.Speech.tell(characters.narrator, text.Narrator.T0004);
-        await ƒS.Sound.fade(sound.terror1, 0, 2);
+        ƒS.Sound.fade(sound.terror2, 0, 2);
         await ƒS.Location.show(locations.InsideApartment);
         await ƒS.update(transitions.static.duration, transitions.static.alpha, transitions.static.edge);
         await ƒS.Speech.tell(characters.narrator, text.Narrator.T0005);
@@ -133,7 +137,7 @@ namespace CityOfHinnom {
                 break;
         }
 
-        await ƒS.Sound.fade(sound.sad4, 0, 1);
+        ƒS.Sound.fade(sound.sad4, 0, 1);
 
         switch (highestScore) {
             case dataForSave.alphaScore:

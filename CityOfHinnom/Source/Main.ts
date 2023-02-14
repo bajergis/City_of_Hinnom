@@ -24,12 +24,12 @@ namespace CityOfHinnom {
     },
     fuzzy: {
       duration: 2,
-      alpha: "Images/Transitions/010.jpg",
+      alpha: "Images/Transitions/010.png",
       edge: 1,
     },
     swirl: {
       duration: 2,
-      alpha: "Images/Transitions/swirl.jpg",
+      alpha: "Images/Transitions/swirl.png",
       edge: 1,
     },
     tv: {
@@ -44,7 +44,7 @@ namespace CityOfHinnom {
     },
     jigsaw: {
       duration: 2,
-      alpha: "Images/Transitions/jigsaw 07.jpg",
+      alpha: "Images/Transitions/jigsaw07.png",
       edge: 1,
     },
     swoosh: {
@@ -97,6 +97,9 @@ namespace CityOfHinnom {
     confirmSFX: "Audio/UI Simple Confirm.wav",
     selectSFX: "Audio/UI Simple Select.wav",
     lily: "Audio/Matsushita Diner.ogg",
+    page1: "Audio/ui_confirm2.ogg",
+    page2: "Audio/ui_confirm3.ogg",
+    page3: "Audio/ui_confirm4.ogg",
   };
 
   // **** LOCATIONS ****
@@ -294,7 +297,10 @@ namespace CityOfHinnom {
     hasMetIris: false,
     hasReadSomething: false,
     ownsCameraRoll: false,
+    ownsIrisLetter2: false,
     ownsBookmark: false,
+    ownsAlphaLetter2: false,
+    ownsLilyLetter2: false,
     ownsChildhoodPicture: false,
     alphaSkip: false,
     irisSkip: false,
@@ -380,12 +386,12 @@ namespace CityOfHinnom {
 
     //button to continue
     ƒS.Speech.hide();
-    let flip = { done: "Continue" };
+    let pause = { done: "Continue" };
     let choice: string;
-    ƒS.Text.addClass("flip");
+    ƒS.Text.addClass("pause");
     do {
-        choice = await ƒS.Menu.getInput(flip, "flip");
-    } while (choice != flip.done);
+        choice = await ƒS.Menu.getInput(pause, "pause");
+    } while (choice != pause.done);
     ƒS.Text.close();
   }
 

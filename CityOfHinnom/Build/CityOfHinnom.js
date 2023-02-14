@@ -7,14 +7,54 @@ var CityOfHinnom;
     // **** TRANSITIONS ****
     // transitions is declared here as well as initialized
     CityOfHinnom.transitions = {
-        puzzle: {
+        bismuth: {
             duration: 2,
-            alpha: "Images/Transitions/jigsaw_06.jpg",
+            alpha: "Images/Transitions/001.jpg",
             edge: 1,
         },
         wipe: {
             duration: 2,
             alpha: "Images/Transitions/circlewipe-cw.jpg",
+            edge: 1,
+        },
+        static: {
+            duration: 2,
+            alpha: "Images/Transitions/006.jpg",
+            edge: 1,
+        },
+        fuzzy: {
+            duration: 2,
+            alpha: "Images/Transitions/010.png",
+            edge: 1,
+        },
+        swirl: {
+            duration: 2,
+            alpha: "Images/Transitions/swirl.png",
+            edge: 1,
+        },
+        tv: {
+            duration: 2,
+            alpha: "Images/Transitions/039.jpg",
+            edge: 1,
+        },
+        ripple: {
+            duration: 2,
+            alpha: "Images/Transitions/040.jpg",
+            edge: 1,
+        },
+        jigsaw: {
+            duration: 2,
+            alpha: "Images/Transitions/jigsaw07.png",
+            edge: 1,
+        },
+        swoosh: {
+            duration: 2,
+            alpha: "Images/Transitions/033.jpg",
+            edge: 1,
+        },
+        wet: {
+            duration: 2,
+            alpha: "Images/Transitions/wet.jpg",
             edge: 1,
         },
         watercolor: {
@@ -56,6 +96,9 @@ var CityOfHinnom;
         confirmSFX: "Audio/UI Simple Confirm.wav",
         selectSFX: "Audio/UI Simple Select.wav",
         lily: "Audio/Matsushita Diner.ogg",
+        page1: "Audio/ui_confirm2.ogg",
+        page2: "Audio/ui_confirm3.ogg",
+        page3: "Audio/ui_confirm4.ogg",
     };
     // **** LOCATIONS ****
     CityOfHinnom.locations = {
@@ -247,7 +290,9 @@ var CityOfHinnom;
         hasMetIris: false,
         hasReadSomething: false,
         ownsCameraRoll: false,
+        ownsIrisLetter2: false,
         ownsBookmark: false,
+        ownsAlphaLetter2: false,
         ownsChildhoodPicture: false,
         alphaSkip: false,
         irisSkip: false,
@@ -328,12 +373,12 @@ var CityOfHinnom;
         window.open(_image);
         //button to continue
         CityOfHinnom.ƒS.Speech.hide();
-        let flip = { done: "Continue" };
+        let pause = { done: "Continue" };
         let choice;
-        CityOfHinnom.ƒS.Text.addClass("flip");
+        CityOfHinnom.ƒS.Text.addClass("pause");
         do {
-            choice = await CityOfHinnom.ƒS.Menu.getInput(flip, "flip");
-        } while (choice != flip.done);
+            choice = await CityOfHinnom.ƒS.Menu.getInput(pause, "pause");
+        } while (choice != pause.done);
         CityOfHinnom.ƒS.Text.close();
     }
     CityOfHinnom.openLetter = openLetter;
@@ -440,23 +485,26 @@ var CityOfHinnom;
             Narrator: {
                 T0001: "As the sun set over the city, its rays cast a fading glow over the empty streets and buildings.",
                 T0002: "I’ve only been here for what seems like a few hours, but for as far as I could see, there doesn’t seem to be any sign of life. The only sound was the gentle rustling of leaves in the breeze, the buzzing of the dated lamps slowly turning on one by one, as well as the squeaking wheels of the vacant trams stopping in the nearby station.",
-                T0003: "When I first opened my eyes and found myself here, I thought I must be dreaming. As I walked through the deserted city, I began to question everything. Why was I here? How did I get here? I have never been in a city like this, what is this place? I felt dreary and nauseous. Who wouldn’t get a bit panicky in this situation. ",
-                T0004: "I was glad that I could at least remember my name...",
-                T0005: "At first, I felt a sense of fear and confusion. Where had everyone gone? What had happened to the bustling metropolis that this place seems to have been?                ",
-                T0006: "But as I started exploring the city, I did notice some upsides. I was able to roam the streets and buildings without fear of crowds or traffic. I could explore places I had never been before.",
-                T0007: "I just couldn't shake the feeling that I was being watched, and that I was not truly alone. This city seemed to be functioning just fine on its own, store lights were on, traffic lights worked. It didn’t even need a population.",
-                T0008: "There was a tempting scent leading me just a few buildings down the street. The aroma of freshly brewed coffee, I wondered if that’s automated as well.",
-                //T0008: "This café seemed pretty inviting.",
+                T0003: "The buildings were nothing but empty shells. Their windows reflected the artificial glow of the traffic lights. Not that there’s any traffic, to begin with.",
+                T0004: "When I first opened my eyes and found myself here, I thought I must be dreaming. As I walked through the deserted city, I began to question everything. Why was I here? How did I get here? I have never been in a city like this, what is this place? I felt dreary and nauseous. Who wouldn’t get a bit panicky in this situation. ",
+                T0005: "I was glad that I could at least remember my name...",
+                T0006: "I felt like I had just woken up from a dreamless sleep that lasted for days. It was like the last few days of my life were just a blur, a hazy memory that I couldn’t grasp. But one thing was for sure: I wanted to go back home but had no idea where it was.",
+                T0007: "The lamps seemed dated and buzzed about like cicadas. Their noise got amplified because of the absence of all other sounds.",
+                T0008: "At first, I felt a sense of fear and confusion. Where had everyone gone? What had happened to the bustling metropolis that this place seems to have been?                ",
+                T0009: "But as I started exploring the city, I did notice some upsides. I was able to roam the streets and buildings without fear of crowds or traffic. I could explore places I had never been before.",
+                T0010: "I just couldn't shake the feeling that I was being watched, and that I was not truly alone. This city seemed to be functioning just fine on its own, store lights were on, traffic lights worked. It didn’t even need a population.",
+                T0011: "Then, what purpose does a city serve if there’s no one to live in it. Maybe I was the only one here and all of this was entirely made for me.",
+                T0012: "There was a tempting scent leading me just a few buildings down the street. The aroma of freshly brewed coffee, I wondered if that’s automated as well.",
             }
         };
         await CityOfHinnom.ƒS.Location.show(CityOfHinnom.locations.CityStreetNight);
         await CityOfHinnom.ƒS.update();
         CityOfHinnom.ƒS.Sound.play(CityOfHinnom.sound.terror1, 1, true);
-        //await ƒS.Character.show(characters.narrator, characters.narrator.pose.happy, ƒS.positionPercent(70,100));
         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0001);
         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0002);
         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0003);
         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0004);
+        await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0005);
         // Enter name 
         if (CityOfHinnom.dataForSave.nameProtagonist != "") {
             await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, CityOfHinnom.dataForSave.nameProtagonist + ".");
@@ -484,14 +532,14 @@ var CityOfHinnom;
                 }
             }
         }
-        await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0005);
         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0006);
         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0007);
-        await CityOfHinnom.ƒS.Sound.fade(CityOfHinnom.sound.terror1, 0, 3);
         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0008);
-        //transition
-        //await ƒS.Location.show(locations.CafeFront);
-        //await ƒS.Speech.tell(characters.narrator, text.Narrator.T0008);
+        await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0009);
+        await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0010);
+        await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0011);
+        CityOfHinnom.ƒS.Sound.fade(CityOfHinnom.sound.terror1, 0, 3);
+        await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0012);
     }
     CityOfHinnom.Intro = Intro;
 })(CityOfHinnom || (CityOfHinnom = {}));
@@ -514,13 +562,12 @@ var CityOfHinnom;
         //Needs option to go to cafe, if not cafe then directly to up the hill
         let text = {
             Narrator: {
-                T0001: "This café seemed pretty inviting",
-                //T0002: "As I opened the door and the typical bell signals that a customer entered, I was greeted by a timid voice. A red haired girl with a camera around her neck stood behind the counter, carefully grinding coffee beans as if she wasn’t sure how much pressure to apply. When she saw me, her eyes lit up a bit.",
-                T0003: "As much as I enjoy coffee, I don't think that it's such a good idea to waste my time like this. I should press on and find some other clues about this place.",
+                T0001: "This café appeared pretty inviting. The lights were on, so who knows, maybe I’ll find someone else.",
+                T0002: "As much as I enjoy coffee, I don't think that it's such a good idea to waste my time like this. I should press on and find some other clues about this place.",
             }
         };
         await CityOfHinnom.ƒS.Location.show(CityOfHinnom.locations.CafeFront);
-        await CityOfHinnom.ƒS.update(CityOfHinnom.transitions.puzzle.duration, CityOfHinnom.transitions.puzzle.alpha, CityOfHinnom.transitions.puzzle.edge);
+        await CityOfHinnom.ƒS.update(CityOfHinnom.transitions.watercolor.duration, CityOfHinnom.transitions.watercolor.alpha, CityOfHinnom.transitions.watercolor.edge);
         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0001);
         //choice
         CityOfHinnom.ƒS.Speech.clear();
@@ -540,7 +587,7 @@ var CityOfHinnom;
                 return "scene02";
             case goIntoCafeChoice.answerWalkOn:
                 // Go to Scene 03
-                await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0003);
+                await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0002);
                 CityOfHinnom.ƒS.Speech.clear();
                 break;
         }
@@ -554,7 +601,7 @@ var CityOfHinnom;
         //option to go to either Up the Hill Scene or Barista Bad end
         let text = {
             Narrator: {
-                T0001: "As I opened the door and the typical bell signals that a customer entered, I was greeted by a timid voice.",
+                T0001: "As I opened the door and the typical bell signaled that a customer entered, I was greeted by a timid voice.",
                 T0001insert: "A red haired girl with a camera around her neck stood behind the counter, carefully grinding coffee beans as if she wasn’t sure how much pressure to apply. When she saw me, her eyes lit up a bit.",
                 T0002: "I gave her my name as well, then took a seat at the counter as she put a cup of steaming coffee in front of me. Some milk and sugar were also there",
                 T0003: "I gave her a confused look.",
@@ -730,12 +777,10 @@ var CityOfHinnom;
             }
         };
         await CityOfHinnom.ƒS.Location.show(CityOfHinnom.locations.CafeInside);
-        //await ƒS.update();
-        await CityOfHinnom.ƒS.update(CityOfHinnom.transitions.puzzle.duration, CityOfHinnom.transitions.puzzle.alpha, CityOfHinnom.transitions.puzzle.edge);
+        await CityOfHinnom.ƒS.update(CityOfHinnom.transitions.wipe.duration, CityOfHinnom.transitions.wipe.alpha, CityOfHinnom.transitions.wipe.edge);
         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0001);
         await CityOfHinnom.ƒS.Character.animate(CityOfHinnom.characters.alpha, CityOfHinnom.characters.alpha.pose.happy, CityOfHinnom.appearAnimation());
         await CityOfHinnom.ƒS.update();
-        // play relax.ogg
         CityOfHinnom.ƒS.Sound.play(CityOfHinnom.sound.cafe, 1, true);
         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0001insert);
         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.alpha, text.Alpha.T0001);
@@ -889,11 +934,11 @@ var CityOfHinnom;
                 CityOfHinnom.ƒS.Sound.fade(CityOfHinnom.sound.cafe, 0, 5);
                 await CityOfHinnom.ƒS.Location.show(CityOfHinnom.locations.CityStreetNight);
                 await CityOfHinnom.ƒS.Character.hide(CityOfHinnom.characters.alpha);
-                await CityOfHinnom.ƒS.update(CityOfHinnom.transitions.puzzle.duration, CityOfHinnom.transitions.puzzle.alpha, CityOfHinnom.transitions.puzzle.edge);
+                await CityOfHinnom.ƒS.update(CityOfHinnom.transitions.tv.duration, CityOfHinnom.transitions.tv.alpha, CityOfHinnom.transitions.tv.edge);
                 await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.TS004);
                 await CityOfHinnom.ƒS.Location.show(CityOfHinnom.locations.AlphaGoodEnd);
                 CityOfHinnom.ƒS.Sound.play(CityOfHinnom.sound.calm, 1, true);
-                await CityOfHinnom.ƒS.update(CityOfHinnom.transitions.puzzle.duration, CityOfHinnom.transitions.puzzle.alpha, CityOfHinnom.transitions.puzzle.edge);
+                await CityOfHinnom.ƒS.update(CityOfHinnom.transitions.tv.duration, CityOfHinnom.transitions.tv.alpha, CityOfHinnom.transitions.tv.edge);
                 await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Alpha.TS009);
                 //Good or Bad End Option
                 if (CityOfHinnom.dataForSave.ownsCameraRoll) {
@@ -915,7 +960,7 @@ var CityOfHinnom;
                     await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.alpha, text.Alpha.TG006);
                     // make alpha disappear
                     await CityOfHinnom.ƒS.Location.show(CityOfHinnom.locations.AlphaEmptyGoodEnd);
-                    await CityOfHinnom.ƒS.Sound.fade(CityOfHinnom.sound.calm, 0, 0);
+                    CityOfHinnom.ƒS.Sound.fade(CityOfHinnom.sound.calm, 0, 0);
                     await CityOfHinnom.ƒS.update();
                     await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.TG004);
                     await CityOfHinnom.ƒS.Location.show(CityOfHinnom.locations.CameraLyingInGrass);
@@ -924,8 +969,11 @@ var CityOfHinnom;
                     await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.TG005);
                     window.open(CityOfHinnom.letters.AlphaLetter2.background);
                     // Create Letter
+                    CityOfHinnom.ƒS.Sound.play(CityOfHinnom.sound.page1, 1, false);
                     CityOfHinnom.openLetter(CityOfHinnom.letters.AlphaLetter2.background);
+                    CityOfHinnom.ƒS.Text.print(" ");
                     CityOfHinnom.ƒS.Inventory.add(CityOfHinnom.items.alphaLetter2);
+                    CityOfHinnom.dataForSave.ownsAlphaLetter2 = true;
                     return "scene07";
                 }
                 else {
@@ -933,9 +981,11 @@ var CityOfHinnom;
                     CityOfHinnom.dataForSave.alphaScore += 50;
                     CityOfHinnom.dataForSave.totalScore += 50;
                     await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.alpha, text.Alpha.TB001);
-                    await CityOfHinnom.ƒS.Sound.fade(CityOfHinnom.sound.calm, 0, 0);
-                    // Create Letter
+                    CityOfHinnom.ƒS.Sound.fade(CityOfHinnom.sound.calm, 0, 0);
+                    // Create 
+                    CityOfHinnom.ƒS.Sound.play(CityOfHinnom.sound.page2, 1, false);
                     CityOfHinnom.openLetter(CityOfHinnom.letters.AlphaLetter1.background);
+                    CityOfHinnom.ƒS.Text.print(" ");
                     CityOfHinnom.ƒS.Inventory.add(CityOfHinnom.items.alphaLetter1);
                     CityOfHinnom.ƒS.Inventory.add(CityOfHinnom.items.filmRoll);
                     CityOfHinnom.dataForSave.ownsCameraRoll = true;
@@ -974,7 +1024,7 @@ var CityOfHinnom;
             }
         };
         await CityOfHinnom.ƒS.Location.show(CityOfHinnom.locations.SlopeHill);
-        await CityOfHinnom.ƒS.update(CityOfHinnom.transitions.puzzle.duration, CityOfHinnom.transitions.puzzle.alpha, CityOfHinnom.transitions.puzzle.edge);
+        await CityOfHinnom.ƒS.update(CityOfHinnom.transitions.wet.duration, CityOfHinnom.transitions.wet.alpha, CityOfHinnom.transitions.wet.edge);
         CityOfHinnom.ƒS.Sound.play(CityOfHinnom.sound.pianoshort1, 1, false);
         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0001);
         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0002);
@@ -1031,7 +1081,7 @@ var CityOfHinnom;
             }
         };
         await CityOfHinnom.ƒS.Location.show(CityOfHinnom.locations.InsideGarden);
-        await CityOfHinnom.ƒS.update(CityOfHinnom.transitions.puzzle.duration, CityOfHinnom.transitions.puzzle.alpha, CityOfHinnom.transitions.puzzle.edge);
+        await CityOfHinnom.ƒS.update(CityOfHinnom.transitions.swoosh.duration, CityOfHinnom.transitions.swoosh.alpha, CityOfHinnom.transitions.swoosh.edge);
         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0001);
         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0002);
         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0003);
@@ -1135,7 +1185,7 @@ var CityOfHinnom;
         //choice leave or stay
         CityOfHinnom.ƒS.Speech.clear();
         CityOfHinnom.ƒS.Speech.hide();
-        await CityOfHinnom.ƒS.Sound.fade(CityOfHinnom.sound.jazz, 0, 3);
+        CityOfHinnom.ƒS.Sound.fade(CityOfHinnom.sound.jazz, 0, 3);
         await CityOfHinnom.ƒS.update(1.5);
         let staywithIrisChoice = {
             answerStay: "Stay with Iris.",
@@ -1156,8 +1206,8 @@ var CityOfHinnom;
                 await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.player, "I know.");
                 await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.iris, "Well, it was nice to see you again, Player. If you figure anything out, I’ll be either here or in the library further down.");
                 await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.player, "I promise I’ll come back.");
-                await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0016);
                 CityOfHinnom.ƒS.Character.animate(CityOfHinnom.characters.iris, CityOfHinnom.characters.iris.pose.happy, CityOfHinnom.disappearAnimation());
+                await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0016);
                 break;
             case staywithIrisChoice.answerStay:
                 // Iris End
@@ -1185,9 +1235,9 @@ var CityOfHinnom;
                 await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0020);
                 await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.player, "Sure. I was eager to see your current home, anyways.");
                 await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.iris, "Sparked your interest, didn’t I?");
-                await CityOfHinnom.ƒS.Sound.fade(CityOfHinnom.sound.jazz, 0, 5);
+                CityOfHinnom.ƒS.Sound.fade(CityOfHinnom.sound.jazz, 0, 3);
                 await CityOfHinnom.ƒS.Location.show(CityOfHinnom.locations.SlopeHill);
-                await CityOfHinnom.ƒS.update(CityOfHinnom.transitions.puzzle.duration, CityOfHinnom.transitions.puzzle.alpha, CityOfHinnom.transitions.puzzle.edge);
+                await CityOfHinnom.ƒS.update(CityOfHinnom.transitions.jigsaw.duration, CityOfHinnom.transitions.jigsaw.alpha, CityOfHinnom.transitions.jigsaw.edge);
                 CityOfHinnom.ƒS.Sound.play(CityOfHinnom.sound.calm, 1, true);
                 await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0021);
                 await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0022);
@@ -1219,12 +1269,12 @@ var CityOfHinnom;
                     //show iris reading book
                     // Novel Page
                     CityOfHinnom.ƒS.Speech.hide();
-                    let pages = ["<strong>Placeholder:</strong><br\><br\>Placeholder. <br\>\
-                        <br\>placeholder.<br\> \
-                        <br\>placeholder.<br\><br\>Page 1",
-                        "Placeholder. <br\> \
-                        <br\>Placeholder.<br\> \
-                        <br\>Placeholder.<br\><br\>Page 2"];
+                    let pages = ["<strong>The Stars and the Goddess:</strong><br\><br\>For centuries, the stars had graced the night sky with their twinkling light. But as time passed and civilization grew, their brilliance was slowly drowned out by the lights of life. Until one day, they vanished completely from sight, and the planets forgot about the beauty that lay beyond their world. <br\>\
+                        <br\>But one day, as a lone goddess was wandering through the woods, she saw something strange in the sky. At first, she couldn't quite make out what it was. But as it got closer, she realized that the stars were returning to their rightful place. They sparkled and danced in the darkness, and the goddess felt a sense of awe and wonder wash over him.<br\> \
+                        <br\>The stars had become too preoccupied with their own creations, and had lost sight of what truly mattered in life. It was time to let go of celestial things and embrace the world around them.<br\><br\>Page 1",
+                        "As the stars continued their ascent, the goddess felt a sense of peace. She knew that this was a new beginning, and that stars could learn to live in harmony with the planet once again. With a smile on her face, she set off into the forest, ready to explore the lush forests that he had been missing for so long. <br\> \
+                        <br\>The stars above continued to twinkle and shine, a reminder of the beauty that lay beyond the untouched world. And as the goddess made her way through the trees, she knew that he had found his way back to where she belonged as well.<br\> \
+                        <br\>Page 2"];
                     let current = 0;
                     let flip = { back: "Back", next: "Next", done: "Close" };
                     let choice;
@@ -1245,7 +1295,7 @@ var CityOfHinnom;
                     CityOfHinnom.dataForSave.irisScore += 50;
                     CityOfHinnom.dataForSave.totalScore += 50;
                     CityOfHinnom.dataForSave.hasReadSomething = true;
-                    await CityOfHinnom.ƒS.Sound.fade(CityOfHinnom.sound.jazz, 0, 0);
+                    CityOfHinnom.ƒS.Sound.fade(CityOfHinnom.sound.jazz, 0, 0);
                     await CityOfHinnom.ƒS.Location.show(CityOfHinnom.locations.BookOnCouch);
                     await CityOfHinnom.ƒS.update(CityOfHinnom.transitions.wipe.duration, CityOfHinnom.transitions.wipe.alpha, CityOfHinnom.transitions.wipe.edge);
                     await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0028);
@@ -1253,8 +1303,11 @@ var CityOfHinnom;
                     await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0030);
                     await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0031);
                     // Create Letter
+                    CityOfHinnom.ƒS.Sound.play(CityOfHinnom.sound.page3, 1, false);
                     CityOfHinnom.openLetter(CityOfHinnom.letters.IrisLetter2.background);
+                    CityOfHinnom.ƒS.Text.print(" ");
                     CityOfHinnom.ƒS.Inventory.add(CityOfHinnom.items.irisLetter2);
+                    CityOfHinnom.dataForSave.ownsIrisLetter2 = true;
                     return "scene07";
                 }
                 else {
@@ -1268,12 +1321,12 @@ var CityOfHinnom;
                     // show iris reading
                     // Novel Page
                     CityOfHinnom.ƒS.Speech.hide();
-                    let pages = ["<strong>Placeholder:</strong><br\><br\>Placeholder. <br\>\
-                        <br\>placeholder.<br\> \
-                        <br\>placeholder.<br\><br\>Page 1",
-                        "Placeholder. <br\> \
-                        <br\>Placeholder.<br\> \
-                        <br\>Placeholder.<br\><br\>Page 2"];
+                    let pages = ["<strong>The Origins of Stars:</strong><br\><br\>Once upon a time, the stars left their home in the sky to descend upon Earth. They wanted to experience something different, to see what it was like to live amongst the creatures of the land. <br\>\
+                        <br\>For many years, the stars thrived on Earth. They shone brightly in the night sky, lighting the way for humans and animals alike. They watched as the humans built their cities, paved their roads, and polluted their skies..<br\> \
+                        <br\>But over time, the stars began to feel out of place. They missed the vast emptiness of space, the peace and quiet of the void. They longed to return to their home in the sky. So, one by one, the stars started to make their way back to space. It was a slow process at first, but soon more and more stars began to follow suit..<br\><br\>Page 1",
+                        "As they rose back into the sky, they looked down at the Earth with a sense of sadness and regret. They had enjoyed their time amongst the creatures of the land, but they knew that they belonged in the vast expanse of space. <br\> \
+                        <br\>The humans looked up at the sky, wondering where the stars had gone. They missed the light and the beauty that the stars had brought to their world. But the stars knew that they were meant to be in space, to shine and twinkle and light up the darkness. They knew that they had returned to where they truly belonged..<br\> \
+                        <br\>And so, the stars continued to shine in the sky, a symbol of the beauty and wonder of space, and a reminder to the humans of what they had lost.<br\><br\>Page 2"];
                     let current = 0;
                     let flip = { back: "Back", next: "Next", done: "Close" };
                     let choice;
@@ -1293,6 +1346,7 @@ var CityOfHinnom;
                     CityOfHinnom.ƒS.Text.close();
                     CityOfHinnom.dataForSave.hasReadSomething = true;
                     await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0033);
+                    await CityOfHinnom.ƒS.Character.animate(CityOfHinnom.characters.iris, CityOfHinnom.characters.iris.pose.happy, CityOfHinnom.appearAnimation());
                     await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.iris, "Hey, do you want to hear something odd? I think I remember why I’m here now. Something in this story reminded me of it.");
                     await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.player, "Go on, tell me.");
                     CityOfHinnom.ƒS.Sound.play(CityOfHinnom.sound.sad1, 1, true);
@@ -1302,19 +1356,22 @@ var CityOfHinnom;
                     await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.player, "So you’re saying we really are dead.");
                     await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.iris, "That’s not all. I know why I’m in this place, specifically. I remember that there are things I regret, and this place is for me to come to terms with them. ");
                     await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.player, "Like what?");
+                    await CityOfHinnom.ƒS.Character.hide(CityOfHinnom.characters.iris);
                     await CityOfHinnom.ƒS.Location.show(CityOfHinnom.locations.IrisBookmark);
-                    await CityOfHinnom.ƒS.update(CityOfHinnom.transitions.puzzle.duration, CityOfHinnom.transitions.puzzle.alpha, CityOfHinnom.transitions.puzzle.edge);
+                    await CityOfHinnom.ƒS.update(CityOfHinnom.transitions.ripple.duration, CityOfHinnom.transitions.ripple.alpha, CityOfHinnom.transitions.ripple.edge);
                     await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0034);
                     await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0035);
                     await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0036);
                     await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0037);
-                    await CityOfHinnom.ƒS.Sound.fade(CityOfHinnom.sound.sad1, 0, 5);
+                    CityOfHinnom.ƒS.Sound.fade(CityOfHinnom.sound.sad1, 0, 5);
                     //Get Bookmark
                     CityOfHinnom.dataForSave.ownsBookmark = true;
                     CityOfHinnom.ƒS.Inventory.add(CityOfHinnom.items.bookmark);
                     //Show iris frustration letter
                     // Create Letter
+                    CityOfHinnom.ƒS.Sound.play(CityOfHinnom.sound.page1, 1, false);
                     CityOfHinnom.openLetter(CityOfHinnom.letters.IrisLetter1.background);
+                    CityOfHinnom.ƒS.Text.print(" ");
                     CityOfHinnom.ƒS.Inventory.add(CityOfHinnom.items.irisLetter1);
                     return "loop";
                 }
@@ -1403,7 +1460,7 @@ var CityOfHinnom;
             }
         };
         await CityOfHinnom.ƒS.Location.show(CityOfHinnom.locations.GatesOfHell);
-        await CityOfHinnom.ƒS.update(CityOfHinnom.transitions.puzzle.duration, CityOfHinnom.transitions.puzzle.alpha, CityOfHinnom.transitions.puzzle.edge);
+        await CityOfHinnom.ƒS.update(CityOfHinnom.transitions.bismuth.duration, CityOfHinnom.transitions.bismuth.alpha, CityOfHinnom.transitions.bismuth.edge);
         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0001);
         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0002);
         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0003);
@@ -1526,12 +1583,17 @@ var CityOfHinnom;
         CityOfHinnom.ƒS.Speech.clear();
         CityOfHinnom.ƒS.Speech.hide();
         await CityOfHinnom.ƒS.update(1);
-        await CityOfHinnom.ƒS.Sound.fade(CityOfHinnom.sound.lily, 0, 3);
+        CityOfHinnom.ƒS.Sound.fade(CityOfHinnom.sound.lily, 0, 3);
+        let exitGate = "";
         let exitThroughGateChoice = {
             answerExit: "Exit through the gate.",
             answerCity: "Go back to the city.",
         };
-        let exitGate = await CityOfHinnom.ƒS.Menu.getInput(exitThroughGateChoice, "choicesCSSclass");
+        if (CityOfHinnom.dataForSave.ownsAlphaLetter2 || CityOfHinnom.dataForSave.ownsIrisLetter2) {
+            exitGate = await CityOfHinnom.ƒS.Menu.getInput(exitThroughGateChoice, "choicesCSSclass");
+        }
+        else
+            exitGate = exitThroughGateChoice.answerExit;
         switch (exitGate) {
             case exitThroughGateChoice.answerExit:
                 // Option if exit or back to lily
@@ -1553,10 +1615,12 @@ var CityOfHinnom;
                         // BAD END
                         CityOfHinnom.dataForSave.pickedExit = true;
                         //clear to black background
+                        await CityOfHinnom.ƒS.Location.show(CityOfHinnom.locations.BlackScreen);
+                        await CityOfHinnom.ƒS.update(CityOfHinnom.transitions.tv.duration, CityOfHinnom.transitions.tv.alpha, CityOfHinnom.transitions.tv.edge);
                         CityOfHinnom.ƒS.Sound.play(CityOfHinnom.sound.terror1, 1, true);
                         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0020);
                         CityOfHinnom.ƒS.Speech.clear();
-                        await CityOfHinnom.ƒS.Sound.fade(CityOfHinnom.sound.terror1, 0, 3);
+                        CityOfHinnom.ƒS.Sound.fade(CityOfHinnom.sound.terror1, 0, 3);
                         return "loop";
                     case exitForRealChoice.answerLily:
                         // Go to Scene 03
@@ -1589,7 +1653,7 @@ var CityOfHinnom;
                         await CityOfHinnom.ƒS.Location.show(CityOfHinnom.locations.OutsideApartment);
                         await CityOfHinnom.ƒS.update(CityOfHinnom.transitions.wipe.duration, CityOfHinnom.transitions.wipe.alpha, CityOfHinnom.transitions.wipe.edge);
                         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0025);
-                        await CityOfHinnom.ƒS.Sound.fade(CityOfHinnom.sound.lily, 0, 3);
+                        CityOfHinnom.ƒS.Sound.fade(CityOfHinnom.sound.lily, 0, 3);
                         if (!CityOfHinnom.dataForSave.ownsChildhoodPicture) {
                             //BAD END
                             CityOfHinnom.ƒS.Sound.play(CityOfHinnom.sound.pianoshort5, 1, false);
@@ -1598,7 +1662,9 @@ var CityOfHinnom;
                             await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0029);
                             // get pictures
                             // Add Letter
+                            CityOfHinnom.ƒS.Sound.play(CityOfHinnom.sound.page2, 1, false);
                             CityOfHinnom.openLetter(CityOfHinnom.letters.LilyLetter1.background);
+                            CityOfHinnom.ƒS.Text.print(" ");
                             CityOfHinnom.ƒS.Inventory.add(CityOfHinnom.items.lilyLetter1);
                             await CityOfHinnom.ƒS.Location.show(CityOfHinnom.locations.LilyChildhoodPicture);
                             await CityOfHinnom.ƒS.update(CityOfHinnom.transitions.watercolor.duration, CityOfHinnom.transitions.watercolor.alpha, CityOfHinnom.transitions.watercolor.edge);
@@ -1609,7 +1675,7 @@ var CityOfHinnom;
                             await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0031);
                             await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0032);
                             await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0033);
-                            await CityOfHinnom.ƒS.Sound.fade(CityOfHinnom.sound.pianoshort3, 0, 3);
+                            CityOfHinnom.ƒS.Sound.fade(CityOfHinnom.sound.pianoshort3, 0, 3);
                             return "loop";
                         }
                         else {
@@ -1645,7 +1711,11 @@ var CityOfHinnom;
                             await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.lily, "Look at my arm.");
                             await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0039);
                             await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.player, "You were climbing a tree when the branch you were standing on broke off. As you fell, you cut your arm on the part where the branch snapped.");
-                            await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.lily, "I didn’t want you to recognize it, so I hid it.");
+                            await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.lily, "The doctors said you will most likely never remember.");
+                            await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.player, "I didn’t remember on my own. You told me.");
+                            await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.lily, "Huh?");
+                            await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.player, "It’s incredibly fuzzy in my head, but part of my memory just came back. I do remember being in the hospital, but they told me it was for an operation. That memory loss was common after it, but wouldn’t necessarily be gone forever.");
+                            await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, "Lily's eyes grew big");
                             await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.player, "Why couldn’t I find out who you were?");
                             await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.lily, "I was afraid that I would instantly vanish out of joy, if you recognized me and we had a happy reunion. But if we leave from here, there’s no guarantee that we’ll ever see each other again. I wanted to spend some time with you before I…");
                             await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.player, "You were planning on leaving tomorrow morning.");
@@ -1657,12 +1727,14 @@ var CityOfHinnom;
                             await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.lily, CityOfHinnom.dataForSave.nameProtagonist + ", I-");
                             CityOfHinnom.dataForSave.irisScore += 50;
                             CityOfHinnom.dataForSave.totalScore += 50;
-                            await CityOfHinnom.ƒS.Sound.fade(CityOfHinnom.sound.sad2, 0, 0);
+                            CityOfHinnom.ƒS.Sound.fade(CityOfHinnom.sound.sad2, 0, 0);
                             await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0042);
                             await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0043);
                             await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0044);
-                            // Add Letter
+                            // Add 
+                            CityOfHinnom.ƒS.Sound.play(CityOfHinnom.sound.page3, 1, false);
                             CityOfHinnom.openLetter(CityOfHinnom.letters.LilyLetter2.background);
+                            CityOfHinnom.ƒS.Text.print(" ");
                             CityOfHinnom.ƒS.Inventory.add(CityOfHinnom.items.lilyLetter2);
                             return "scene07";
                         }
@@ -1671,6 +1743,7 @@ var CityOfHinnom;
                 break;
             case exitThroughGateChoice.answerCity:
                 // Go to Scene 07
+                await CityOfHinnom.ƒS.Character.animate(CityOfHinnom.characters.lily, CityOfHinnom.characters.lily.pose.happy, CityOfHinnom.disappearAnimation());
                 CityOfHinnom.dataForSave.pickedReturnToCity = true;
                 await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0045);
                 CityOfHinnom.ƒS.Speech.clear();
@@ -1709,17 +1782,17 @@ var CityOfHinnom;
             }
         };
         await CityOfHinnom.ƒS.Location.show(CityOfHinnom.locations.CityStreetNight);
-        await CityOfHinnom.ƒS.update(CityOfHinnom.transitions.puzzle.duration, CityOfHinnom.transitions.puzzle.alpha, CityOfHinnom.transitions.puzzle.edge);
+        await CityOfHinnom.ƒS.update(CityOfHinnom.transitions.swirl.duration, CityOfHinnom.transitions.swirl.alpha, CityOfHinnom.transitions.swirl.edge);
         CityOfHinnom.ƒS.Sound.play(CityOfHinnom.sound.terror2, 1, true);
         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0001);
         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0002);
         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0003);
         await CityOfHinnom.ƒS.Location.show(CityOfHinnom.locations.OutsideApartment);
-        await CityOfHinnom.ƒS.update(CityOfHinnom.transitions.puzzle.duration, CityOfHinnom.transitions.puzzle.alpha, CityOfHinnom.transitions.puzzle.edge);
+        await CityOfHinnom.ƒS.update(CityOfHinnom.transitions.fuzzy.duration, CityOfHinnom.transitions.fuzzy.alpha, CityOfHinnom.transitions.fuzzy.edge);
         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0004);
-        await CityOfHinnom.ƒS.Sound.fade(CityOfHinnom.sound.terror1, 0, 2);
+        CityOfHinnom.ƒS.Sound.fade(CityOfHinnom.sound.terror1, 0, 2);
         await CityOfHinnom.ƒS.Location.show(CityOfHinnom.locations.InsideApartment);
-        await CityOfHinnom.ƒS.update(CityOfHinnom.transitions.puzzle.duration, CityOfHinnom.transitions.puzzle.alpha, CityOfHinnom.transitions.puzzle.edge);
+        await CityOfHinnom.ƒS.update(CityOfHinnom.transitions.static.duration, CityOfHinnom.transitions.static.alpha, CityOfHinnom.transitions.static.edge);
         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0005);
         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0006);
         CityOfHinnom.ƒS.Sound.play(CityOfHinnom.sound.pianoshort5, 1, false);
@@ -1729,7 +1802,7 @@ var CityOfHinnom;
         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0009);
         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0010);
         await CityOfHinnom.ƒS.Location.show(CityOfHinnom.locations.BlackScreen);
-        await CityOfHinnom.ƒS.update(CityOfHinnom.transitions.puzzle.duration, CityOfHinnom.transitions.puzzle.alpha, CityOfHinnom.transitions.puzzle.edge);
+        await CityOfHinnom.ƒS.update(CityOfHinnom.transitions.tv.duration, CityOfHinnom.transitions.tv.alpha, CityOfHinnom.transitions.tv.edge);
         CityOfHinnom.ƒS.Sound.play(CityOfHinnom.sound.sad4, 1, true);
         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0011);
         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0012);
@@ -1806,7 +1879,7 @@ var CityOfHinnom;
             default:
                 break;
         }
-        await CityOfHinnom.ƒS.Sound.fade(CityOfHinnom.sound.sad4, 0, 1);
+        CityOfHinnom.ƒS.Sound.fade(CityOfHinnom.sound.sad4, 0, 1);
         switch (highestScore) {
             case CityOfHinnom.dataForSave.alphaScore:
                 // Alpha End

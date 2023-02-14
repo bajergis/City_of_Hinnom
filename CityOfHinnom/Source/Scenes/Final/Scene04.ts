@@ -175,7 +175,7 @@ namespace CityOfHinnom {
         //choice leave or stay
         ƒS.Speech.clear();
         ƒS.Speech.hide();
-        await ƒS.Sound.fade(sound.jazz, 0, 3);
+        ƒS.Sound.fade(sound.jazz, 0, 3);
         await ƒS.update(1.5);
 
         let staywithIrisChoice = {
@@ -200,9 +200,8 @@ namespace CityOfHinnom {
                 await ƒS.Speech.tell(characters.iris, "Well, it was nice to see you again, Player. If you figure anything out, I’ll be either here or in the library further down.");
                 await ƒS.Speech.tell(characters.player, "I promise I’ll come back.");
 
+                await ƒS.Character.animate(characters.iris, characters.iris.pose.happy, disappearAnimation());
                 await ƒS.Speech.tell(characters.narrator, text.Narrator.T0016);
-
-                ƒS.Character.animate(characters.iris, characters.iris.pose.happy, disappearAnimation());
                 break;
             case staywithIrisChoice.answerStay:
                 // Iris End
@@ -240,7 +239,7 @@ namespace CityOfHinnom {
                 await ƒS.Speech.tell(characters.player, "Sure. I was eager to see your current home, anyways.");
                 await ƒS.Speech.tell(characters.iris, "Sparked your interest, didn’t I?");
 
-                await ƒS.Sound.fade(sound.jazz, 0, 5);
+                ƒS.Sound.fade(sound.jazz, 0, 3);
 
                 await ƒS.Location.show(locations.SlopeHill);
                 await ƒS.update(transitions.jigsaw.duration, transitions.jigsaw.alpha, transitions.jigsaw.edge);
@@ -282,7 +281,7 @@ namespace CityOfHinnom {
                     await ƒS.Speech.tell(characters.narrator, text.Narrator.T0027);
 
                     await ƒS.Speech.tell(characters.iris, "I’ll start reading. If we don’t get through it in one sitting, we can pick up on it next time.");
-                    ƒS.Character.animate(characters.iris, characters.iris.pose.happy, disappearAnimation());
+                    await ƒS.Character.animate(characters.iris, characters.iris.pose.happy, disappearAnimation());
                     ƒS.Sound.fade(sound.calm, 0, 3);
 
                     //show iris reading book
@@ -290,12 +289,12 @@ namespace CityOfHinnom {
                     // Novel Page
                     ƒS.Speech.hide();
 
-                    let pages: string[] = ["<strong>Placeholder:</strong><br\><br\>Placeholder. <br\>\
-                        <br\>placeholder.<br\> \
-                        <br\>placeholder.<br\><br\>Page 1",
-                        "Placeholder. <br\> \
-                        <br\>Placeholder.<br\> \
-                        <br\>Placeholder.<br\><br\>Page 2"];
+                    let pages: string[] = ["<strong>The Stars and the Goddess:</strong><br\><br\>For centuries, the stars had graced the night sky with their twinkling light. But as time passed and civilization grew, their brilliance was slowly drowned out by the lights of life. Until one day, they vanished completely from sight, and the planets forgot about the beauty that lay beyond their world. <br\>\
+                        <br\>But one day, as a lone goddess was wandering through the woods, she saw something strange in the sky. At first, she couldn't quite make out what it was. But as it got closer, she realized that the stars were returning to their rightful place. They sparkled and danced in the darkness, and the goddess felt a sense of awe and wonder wash over him.<br\> \
+                        <br\>The stars had become too preoccupied with their own creations, and had lost sight of what truly mattered in life. It was time to let go of celestial things and embrace the world around them.<br\><br\>Page 1",
+                        "As the stars continued their ascent, the goddess felt a sense of peace. She knew that this was a new beginning, and that stars could learn to live in harmony with the planet once again. With a smile on her face, she set off into the forest, ready to explore the lush forests that he had been missing for so long. <br\> \
+                        <br\>The stars above continued to twinkle and shine, a reminder of the beauty that lay beyond the untouched world. And as the goddess made her way through the trees, she knew that he had found his way back to where she belonged as well.<br\> \
+                        <br\>Page 2"];
                     let current: number = 0;
                     let flip = { back: "Back", next: "Next", done: "Close" };
                     let choice: string;
@@ -312,7 +311,7 @@ namespace CityOfHinnom {
                     dataForSave.irisScore += 50;
                     dataForSave.totalScore += 50;
                     dataForSave.hasReadSomething = true;
-                    await ƒS.Sound.fade(sound.jazz, 0, 0);
+                    ƒS.Sound.fade(sound.jazz, 0, 0);
 
                     await ƒS.Location.show(locations.BookOnCouch);
                     await ƒS.update(transitions.wipe.duration, transitions.wipe.alpha, transitions.wipe.edge);
@@ -322,9 +321,12 @@ namespace CityOfHinnom {
                     await ƒS.Speech.tell(characters.narrator, text.Narrator.T0031);
 
                     // Create Letter
+                    ƒS.Sound.play(sound.page3, 1, false);
                     openLetter(letters.IrisLetter2.background);
+                    ƒS.Text.print(" ");
 
                     ƒS.Inventory.add(items.irisLetter2);
+                    dataForSave.ownsIrisLetter2 = true;
                     return "scene07";
 
                 } else {
@@ -334,7 +336,7 @@ namespace CityOfHinnom {
                     await ƒS.Speech.tell(characters.player, "Then we can read another book.");
 
                     await ƒS.Speech.tell(characters.narrator, text.Narrator.T0032);
-                    ƒS.Character.animate(characters.iris, characters.iris.pose.happy, disappearAnimation());
+                    await ƒS.Character.animate(characters.iris, characters.iris.pose.happy, disappearAnimation());
                     ƒS.Sound.fade(sound.calm, 0, 3);
 
                     // show iris reading
@@ -342,12 +344,12 @@ namespace CityOfHinnom {
                     // Novel Page
                     ƒS.Speech.hide();
 
-                    let pages: string[] = ["<strong>Placeholder:</strong><br\><br\>Placeholder. <br\>\
-                        <br\>placeholder.<br\> \
-                        <br\>placeholder.<br\><br\>Page 1",
-                        "Placeholder. <br\> \
-                        <br\>Placeholder.<br\> \
-                        <br\>Placeholder.<br\><br\>Page 2"];
+                    let pages: string[] = ["<strong>The Origins of Stars:</strong><br\><br\>Once upon a time, the stars left their home in the sky to descend upon Earth. They wanted to experience something different, to see what it was like to live amongst the creatures of the land. <br\>\
+                        <br\>For many years, the stars thrived on Earth. They shone brightly in the night sky, lighting the way for humans and animals alike. They watched as the humans built their cities, paved their roads, and polluted their skies..<br\> \
+                        <br\>But over time, the stars began to feel out of place. They missed the vast emptiness of space, the peace and quiet of the void. They longed to return to their home in the sky. So, one by one, the stars started to make their way back to space. It was a slow process at first, but soon more and more stars began to follow suit..<br\><br\>Page 1",
+                        "As they rose back into the sky, they looked down at the Earth with a sense of sadness and regret. They had enjoyed their time amongst the creatures of the land, but they knew that they belonged in the vast expanse of space. <br\> \
+                        <br\>The humans looked up at the sky, wondering where the stars had gone. They missed the light and the beauty that the stars had brought to their world. But the stars knew that they were meant to be in space, to shine and twinkle and light up the darkness. They knew that they had returned to where they truly belonged..<br\> \
+                        <br\>And so, the stars continued to shine in the sky, a symbol of the beauty and wonder of space, and a reminder to the humans of what they had lost.<br\><br\>Page 2"];
                     let current: number = 0;
                     let flip = { back: "Back", next: "Next", done: "Close" };
                     let choice: string;
@@ -365,6 +367,7 @@ namespace CityOfHinnom {
 
                     await ƒS.Speech.tell(characters.narrator, text.Narrator.T0033);
 
+                    await ƒS.Character.animate(characters.iris, characters.iris.pose.happy, appearAnimation());
                     await ƒS.Speech.tell(characters.iris, "Hey, do you want to hear something odd? I think I remember why I’m here now. Something in this story reminded me of it.");
                     await ƒS.Speech.tell(characters.player, "Go on, tell me.");
                     ƒS.Sound.play(sound.sad1, 1, true);
@@ -374,6 +377,7 @@ namespace CityOfHinnom {
                     await ƒS.Speech.tell(characters.player, "So you’re saying we really are dead.");
                     await ƒS.Speech.tell(characters.iris, "That’s not all. I know why I’m in this place, specifically. I remember that there are things I regret, and this place is for me to come to terms with them. ");
                     await ƒS.Speech.tell(characters.player, "Like what?");
+                    await ƒS.Character.hide(characters.iris);
 
                     await ƒS.Location.show(locations.IrisBookmark);
                     await ƒS.update(transitions.ripple.duration, transitions.ripple.alpha, transitions.ripple.edge);
@@ -383,14 +387,16 @@ namespace CityOfHinnom {
                     await ƒS.Speech.tell(characters.narrator, text.Narrator.T0036);
                     await ƒS.Speech.tell(characters.narrator, text.Narrator.T0037);
 
-                    await ƒS.Sound.fade(sound.sad1, 0, 5);
+                    ƒS.Sound.fade(sound.sad1, 0, 5);
 
                     //Get Bookmark
                     dataForSave.ownsBookmark = true;
                     ƒS.Inventory.add(items.bookmark);
                     //Show iris frustration letter
                     // Create Letter
+                    ƒS.Sound.play(sound.page1, 1, false);
                     openLetter(letters.IrisLetter1.background);
+                    ƒS.Text.print(" ");
                     ƒS.Inventory.add(items.irisLetter1);
                     return "loop";
 

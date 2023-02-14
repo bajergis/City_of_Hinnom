@@ -6,7 +6,7 @@ namespace CityOfHinnom {
 
         let text = {
             Narrator: {
-                T0001: "As I opened the door and the typical bell signals that a customer entered, I was greeted by a timid voice.",
+                T0001: "As I opened the door and the typical bell signaled that a customer entered, I was greeted by a timid voice.",
                 T0001insert: "A red haired girl with a camera around her neck stood behind the counter, carefully grinding coffee beans as if she wasn’t sure how much pressure to apply. When she saw me, her eyes lit up a bit.",
                 T0002: "I gave her my name as well, then took a seat at the counter as she put a cup of steaming coffee in front of me. Some milk and sugar were also there",
                 T0003: "I gave her a confused look.",
@@ -183,13 +183,11 @@ namespace CityOfHinnom {
         }
 
         await ƒS.Location.show(locations.CafeInside);
-        //await ƒS.update();
         await ƒS.update(transitions.wipe.duration, transitions.wipe.alpha, transitions.wipe.edge);
         await ƒS.Speech.tell(characters.narrator, text.Narrator.T0001);
 
         await ƒS.Character.animate(characters.alpha, characters.alpha.pose.happy, appearAnimation());
         await ƒS.update();
-        // play relax.ogg
         ƒS.Sound.play(sound.cafe, 1, true);
 
         await ƒS.Speech.tell(characters.narrator, text.Narrator.T0001insert);
@@ -418,7 +416,7 @@ namespace CityOfHinnom {
                     await ƒS.Speech.tell(characters.alpha, text.Alpha.TG006);
                     // make alpha disappear
                     await ƒS.Location.show(locations.AlphaEmptyGoodEnd);
-                    await ƒS.Sound.fade(sound.calm, 0, 0);
+                    ƒS.Sound.fade(sound.calm, 0, 0);
                     await ƒS.update();
 
                     await ƒS.Speech.tell(characters.narrator, text.Narrator.TG004);
@@ -432,9 +430,12 @@ namespace CityOfHinnom {
                     window.open(letters.AlphaLetter2.background);
 
                     // Create Letter
+                    ƒS.Sound.play(sound.page1, 1, false);
                     openLetter(letters.AlphaLetter2.background);
+                    ƒS.Text.print(" ");
 
                     ƒS.Inventory.add(items.alphaLetter2);
+                    dataForSave.ownsAlphaLetter2 = true;
                     return "scene07";
 
                 } else {
@@ -442,9 +443,11 @@ namespace CityOfHinnom {
                     dataForSave.alphaScore += 50;
                     dataForSave.totalScore += 50;
                     await ƒS.Speech.tell(characters.alpha, text.Alpha.TB001);
-                    await ƒS.Sound.fade(sound.calm, 0, 0);
-                    // Create Letter
+                    ƒS.Sound.fade(sound.calm, 0, 0);
+                    // Create 
+                    ƒS.Sound.play(sound.page2, 1, false);
                     openLetter(letters.AlphaLetter1.background);
+                    ƒS.Text.print(" ");
 
                     ƒS.Inventory.add(items.alphaLetter1);
                     ƒS.Inventory.add(items.filmRoll);
@@ -467,7 +470,7 @@ namespace CityOfHinnom {
 
                 await ƒS.Speech.tell(characters.narrator, text.Narrator.TH002);
 
-                ƒS.Character.animate(characters.alpha, characters.alpha.pose.happy, disappearAnimation());
+                await ƒS.Character.animate(characters.alpha, characters.alpha.pose.happy, disappearAnimation());
                 ƒS.Speech.clear();
 
                 break;

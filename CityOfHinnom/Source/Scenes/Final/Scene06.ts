@@ -86,7 +86,7 @@ namespace CityOfHinnom {
 
         await ƒS.Speech.tell(characters.narrator, text.Narrator.T0006);
 
-        await ƒS.Speech.tell(characters.player, "Alright, I'm" + dataForSave.nameProtagonist);
+        await ƒS.Speech.tell(characters.player, "Alright, I'm " + dataForSave.nameProtagonist);
 
         await ƒS.Speech.tell(characters.narrator, text.Narrator.T0007);
 
@@ -210,14 +210,16 @@ namespace CityOfHinnom {
         ƒS.Speech.clear();
         ƒS.Speech.hide();
         await ƒS.update(1);
-        await ƒS.Sound.fade(sound.lily, 0, 3);
-
+        ƒS.Sound.fade(sound.lily, 0, 3);
+        let exitGate = "";
         let exitThroughGateChoice = {
             answerExit: "Exit through the gate.",
             answerCity: "Go back to the city.",
         };
 
-        let exitGate = await ƒS.Menu.getInput(exitThroughGateChoice, "choicesCSSclass");
+        if(dataForSave.ownsAlphaLetter2 || dataForSave.ownsIrisLetter2) {
+            exitGate = await ƒS.Menu.getInput(exitThroughGateChoice, "choicesCSSclass");
+        } else exitGate = exitThroughGateChoice.answerExit;
 
         switch (exitGate) {
             case exitThroughGateChoice.answerExit:
@@ -245,11 +247,13 @@ namespace CityOfHinnom {
                         dataForSave.pickedExit = true;
 
                         //clear to black background
+                        await ƒS.Location.show(locations.BlackScreen);
+                        await ƒS.update(transitions.tv.duration, transitions.tv.alpha, transitions.tv.edge);
                         ƒS.Sound.play(sound.terror1, 1, true);
 
                         await ƒS.Speech.tell(characters.narrator, text.Narrator.T0020);
                         ƒS.Speech.clear();
-                        await ƒS.Sound.fade(sound.terror1, 0, 3);
+                        ƒS.Sound.fade(sound.terror1, 0, 3);
                         return "loop";
                     case exitForRealChoice.answerLily:
                         // Go to Scene 03
@@ -287,7 +291,7 @@ namespace CityOfHinnom {
                         await ƒS.Location.show(locations.OutsideApartment);
                         await ƒS.update(transitions.wipe.duration, transitions.wipe.alpha, transitions.wipe.edge);
                         await ƒS.Speech.tell(characters.narrator, text.Narrator.T0025);
-                        await ƒS.Sound.fade(sound.lily, 0, 3);
+                        ƒS.Sound.fade(sound.lily, 0, 3);
 
                         
                         if (!dataForSave.ownsChildhoodPicture) {
@@ -298,7 +302,9 @@ namespace CityOfHinnom {
                             await ƒS.Speech.tell(characters.narrator, text.Narrator.T0029);
                             // get pictures
                             // Add Letter
+                            ƒS.Sound.play(sound.page2, 1, false);
                             openLetter(letters.LilyLetter1.background);
+                            ƒS.Text.print(" ");
                             ƒS.Inventory.add(items.lilyLetter1);
                             await ƒS.Location.show(locations.LilyChildhoodPicture);
                             await ƒS.update(transitions.watercolor.duration, transitions.watercolor.alpha, transitions.watercolor.edge);
@@ -310,7 +316,7 @@ namespace CityOfHinnom {
                             await ƒS.Speech.tell(characters.narrator, text.Narrator.T0031);
                             await ƒS.Speech.tell(characters.narrator, text.Narrator.T0032);
                             await ƒS.Speech.tell(characters.narrator, text.Narrator.T0033);
-                            await ƒS.Sound.fade(sound.pianoshort3, 0, 3);
+                            ƒS.Sound.fade(sound.pianoshort3, 0, 3);
                             return "loop";
 
                         } else {
@@ -358,7 +364,13 @@ namespace CityOfHinnom {
                             await ƒS.Speech.tell(characters.narrator, text.Narrator.T0039);
 
                             await ƒS.Speech.tell(characters.player, "You were climbing a tree when the branch you were standing on broke off. As you fell, you cut your arm on the part where the branch snapped.");
-                            await ƒS.Speech.tell(characters.lily, "I didn’t want you to recognize it, so I hid it."); 
+                            await ƒS.Speech.tell(characters.lily, "The doctors said you will most likely never remember."); 
+                            await ƒS.Speech.tell(characters.player, "I didn’t remember on my own. You told me."); 
+                            await ƒS.Speech.tell(characters.lily, "Huh?"); 
+                            await ƒS.Speech.tell(characters.player, "It’s incredibly fuzzy in my head, but part of my memory just came back. I do remember being in the hospital, but they told me it was for an operation. That memory loss was common after it, but wouldn’t necessarily be gone forever."); 
+                            
+                            await ƒS.Speech.tell(characters.narrator, "Lily's eyes grew big");
+
                             await ƒS.Speech.tell(characters.player, "Why couldn’t I find out who you were?");
                             await ƒS.Speech.tell(characters.lily, "I was afraid that I would instantly vanish out of joy, if you recognized me and we had a happy reunion. But if we leave from here, there’s no guarantee that we’ll ever see each other again. I wanted to spend some time with you before I…"); 
                             await ƒS.Speech.tell(characters.player, "You were planning on leaving tomorrow morning.");
@@ -372,17 +384,23 @@ namespace CityOfHinnom {
                             await ƒS.Speech.tell(characters.narrator, text.Narrator.T0041);
 
                             await ƒS.Speech.tell(characters.lily, dataForSave.nameProtagonist + ", I-");
+                            ƒS.Character.animate(characters.lily, characters.lily.pose.happy, disappearAnimation());
                             dataForSave.irisScore += 50;
                             dataForSave.totalScore += 50;
-                            await ƒS.Sound.fade(sound.sad2, 0, 0);
+                            ƒS.Sound.fade(sound.sad2, 0, 1);
 
                             await ƒS.Speech.tell(characters.narrator, text.Narrator.T0042);
                             await ƒS.Speech.tell(characters.narrator, text.Narrator.T0043);
                             await ƒS.Speech.tell(characters.narrator, text.Narrator.T0044);
 
-                            // Add Letter
+                            // Add 
+                            ƒS.Sound.play(sound.page3, 1, false);
                             openLetter(letters.LilyLetter2.background);
+                            ƒS.Text.print(" ");
                             ƒS.Inventory.add(items.lilyLetter2);
+                            dataForSave.ownsLilyLetter2 = true;
+                            await ƒS.Speech.tell(characters.narrator, "I couldn't take this. I hurried out of her apartment and returned to mine.");
+                            await ƒS.Speech.tell(characters.narrator, "It was at that moment when bits of this world started making sense to me.");
                             return "scene07";
                         }
                 }
@@ -390,6 +408,7 @@ namespace CityOfHinnom {
                 break;
             case exitThroughGateChoice.answerCity:
                 // Go to Scene 07
+                await ƒS.Character.animate(characters.lily, characters.lily.pose.happy, disappearAnimation());
                 dataForSave.pickedReturnToCity = true;
                 await ƒS.Speech.tell(characters.narrator, text.Narrator.T0045);
                 ƒS.Speech.clear();
