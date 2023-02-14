@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="CityOfHinnom.css">
+  <script src="Fudge/FudgeCore.js"></script>
+  <script src="FudgeStory/FudgeStory.js"></script>
+  <script src="./Build/CityOfHinnom.js"></script>
+  <title>Dating Sim Test</title>
+  <!-- <splash src="Images/Splash.png" /> -->
+</head>
+
+<body>
+  <scene>
+    <canvas></canvas>
+    <speech>
+      <name></name>
+      <content></content>
+    </speech>
+    <dialog type="text">
+      The content of a page of text for reading
+    </dialog>
+    <dialog type="inventory">
+      <button type="button">close</button>
+      <ul>
+      </ul>
+    </dialog>
+
+    <div type="interface">
+
+      <meter id="truthMeter" name="totalScore" min="0" max="350" disabled></meter>
+    </div>
+  </scene>
+  <dialog type="splash" open>
+    <img id="FudgeStoryLogo" theme="dark" /> <!-- use "light" or "dark" -->
+    <p>
+      Dating Sim Test
+    </p>
+  </dialog>
+
+</body>
+
+</html>
