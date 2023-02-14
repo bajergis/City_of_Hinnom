@@ -55,7 +55,7 @@ namespace CityOfHinnom {
         }
 
         await ƒS.Location.show(locations.GatesOfHell);
-        await ƒS.update(transitions.puzzle.duration, transitions.puzzle.alpha, transitions.puzzle.edge);
+        await ƒS.update(transitions.bismuth.duration, transitions.bismuth.alpha, transitions.bismuth.edge);
 
         await ƒS.Speech.tell(characters.narrator, text.Narrator.T0001);
         await ƒS.Speech.tell(characters.narrator, text.Narrator.T0002);

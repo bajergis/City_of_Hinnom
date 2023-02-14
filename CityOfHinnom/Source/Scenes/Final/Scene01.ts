@@ -13,7 +13,7 @@ namespace CityOfHinnom {
         }
 
         await ƒS.Location.show(locations.CafeFront);
-        await ƒS.update(transitions.puzzle.duration, transitions.puzzle.alpha, transitions.puzzle.edge);
+        await ƒS.update(transitions.watercolor.duration, transitions.watercolor.alpha, transitions.watercolor.edge);
         await ƒS.Speech.tell(characters.narrator, text.Narrator.T0001);
         //choice
         ƒS.Speech.clear();

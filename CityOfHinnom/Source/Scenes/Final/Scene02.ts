@@ -184,7 +184,7 @@ namespace CityOfHinnom {
 
         await ƒS.Location.show(locations.CafeInside);
         //await ƒS.update();
-        await ƒS.update(transitions.puzzle.duration, transitions.puzzle.alpha, transitions.puzzle.edge);
+        await ƒS.update(transitions.wipe.duration, transitions.wipe.alpha, transitions.wipe.edge);
         await ƒS.Speech.tell(characters.narrator, text.Narrator.T0001);
 
         await ƒS.Character.animate(characters.alpha, characters.alpha.pose.happy, appearAnimation());
@@ -382,13 +382,13 @@ namespace CityOfHinnom {
 
                 await ƒS.Location.show(locations.CityStreetNight);
                 await ƒS.Character.hide(characters.alpha);
-                await ƒS.update(transitions.puzzle.duration, transitions.puzzle.alpha, transitions.puzzle.edge);
+                await ƒS.update(transitions.tv.duration, transitions.tv.alpha, transitions.tv.edge);
 
                 await ƒS.Speech.tell(characters.narrator, text.Narrator.TS004);
 
                 await ƒS.Location.show(locations.AlphaGoodEnd);
                 ƒS.Sound.play(sound.calm, 1, true);
-                await ƒS.update(transitions.puzzle.duration, transitions.puzzle.alpha, transitions.puzzle.edge);
+                await ƒS.update(transitions.tv.duration, transitions.tv.alpha, transitions.tv.edge);
 
                 await ƒS.Speech.tell(characters.narrator, text.Alpha.TS009);
 

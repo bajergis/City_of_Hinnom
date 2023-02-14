@@ -15,7 +15,7 @@ namespace CityOfHinnom {
         }
 
         await ƒS.Location.show(locations.SlopeHill);
-        await ƒS.update(transitions.puzzle.duration, transitions.puzzle.alpha, transitions.puzzle.edge);
+        await ƒS.update(transitions.wet.duration, transitions.wet.alpha, transitions.wet.edge);
         ƒS.Sound.play(sound.pianoshort1, 1, false);
         await ƒS.Speech.tell(characters.narrator, text.Narrator.T0001);
         await ƒS.Speech.tell(characters.narrator, text.Narrator.T0002);

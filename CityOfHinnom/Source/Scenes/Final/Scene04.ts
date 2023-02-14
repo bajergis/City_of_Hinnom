@@ -47,7 +47,7 @@ namespace CityOfHinnom {
         }
 
         await ƒS.Location.show(locations.InsideGarden);
-        await ƒS.update(transitions.puzzle.duration, transitions.puzzle.alpha, transitions.puzzle.edge);
+        await ƒS.update(transitions.swoosh.duration, transitions.swoosh.alpha, transitions.swoosh.edge);
 
         await ƒS.Speech.tell(characters.narrator, text.Narrator.T0001);
         await ƒS.Speech.tell(characters.narrator, text.Narrator.T0002);
@@ -243,7 +243,7 @@ namespace CityOfHinnom {
                 await ƒS.Sound.fade(sound.jazz, 0, 5);
 
                 await ƒS.Location.show(locations.SlopeHill);
-                await ƒS.update(transitions.puzzle.duration, transitions.puzzle.alpha, transitions.puzzle.edge);
+                await ƒS.update(transitions.jigsaw.duration, transitions.jigsaw.alpha, transitions.jigsaw.edge);
                 ƒS.Sound.play(sound.calm, 1, true);
 
                 await ƒS.Speech.tell(characters.narrator, text.Narrator.T0021);
@@ -376,7 +376,7 @@ namespace CityOfHinnom {
                     await ƒS.Speech.tell(characters.player, "Like what?");
 
                     await ƒS.Location.show(locations.IrisBookmark);
-                    await ƒS.update(transitions.puzzle.duration, transitions.puzzle.alpha, transitions.puzzle.edge);
+                    await ƒS.update(transitions.ripple.duration, transitions.ripple.alpha, transitions.ripple.edge);
 
                     await ƒS.Speech.tell(characters.narrator, text.Narrator.T0034);
                     await ƒS.Speech.tell(characters.narrator, text.Narrator.T0035);

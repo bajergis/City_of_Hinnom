@@ -7,14 +7,54 @@ namespace CityOfHinnom {
  // **** TRANSITIONS ****
   // transitions is declared here as well as initialized
   export let transitions = {
-    puzzle: {
+    bismuth: {
       duration: 2,
-      alpha: "Images/Transitions/jigsaw_06.jpg",
+      alpha: "Images/Transitions/001.jpg",
       edge: 1,
     },
     wipe: {
       duration: 2,
       alpha: "Images/Transitions/circlewipe-cw.jpg",
+      edge: 1,
+    },
+    static: {
+      duration: 2,
+      alpha: "Images/Transitions/006.jpg",
+      edge: 1,
+    },
+    fuzzy: {
+      duration: 2,
+      alpha: "Images/Transitions/010.jpg",
+      edge: 1,
+    },
+    swirl: {
+      duration: 2,
+      alpha: "Images/Transitions/swirl.jpg",
+      edge: 1,
+    },
+    tv: {
+      duration: 2,
+      alpha: "Images/Transitions/039.jpg",
+      edge: 1,
+    },
+    ripple: {
+      duration: 2,
+      alpha: "Images/Transitions/040.jpg",
+      edge: 1,
+    },
+    jigsaw: {
+      duration: 2,
+      alpha: "Images/Transitions/jigsaw 07.jpg",
+      edge: 1,
+    },
+    swoosh: {
+      duration: 2,
+      alpha: "Images/Transitions/033.jpg",
+      edge: 1,
+    },
+    wet: {
+      duration: 2,
+      alpha: "Images/Transitions/wet.jpg",
       edge: 1,
     },
     watercolor: {
