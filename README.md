@@ -7,8 +7,8 @@ https://github.com/bajergis/City_of_Hinnom/tree/master/CityOfHinnom
 # Link zum Konzeptdokument
 https://github.com/bajergis/City_of_Hinnom/blob/master/Konzeption_Final.pdf
 
-# Archiv mit Konzeptdokument und Projektordner
-
+# Archiv mit Konzeptdokument und Projektordner (musste auf Drive weil über 100MB)
+https://drive.google.com/file/d/1pr2EtmSoFlVPN5ATKk5Nzs1NA1YXziiX/view?usp=share_link
 
 # Reference
 - [APIs](https://jirkadelloro.github.io/FUDGE_Story/Documentation/Reference/#fudge-story-reference)
