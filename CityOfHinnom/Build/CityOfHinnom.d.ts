@@ -280,6 +280,7 @@ declare namespace CityOfHinnom {
         ownsIrisLetter2: boolean;
         ownsBookmark: boolean;
         ownsAlphaLetter2: boolean;
+        ownsLilyLetter2: boolean;
         ownsChildhoodPicture: boolean;
         alphaSkip: boolean;
         irisSkip: boolean;

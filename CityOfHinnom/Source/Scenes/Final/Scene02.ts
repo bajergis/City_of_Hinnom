@@ -28,7 +28,10 @@ namespace CityOfHinnom {
                 TS004: "We headed out and took a stroll through the dimly illuminated roads. There was no one besides us, each word we said echoed back along these unfamiliar buildings. Alpha was quite amused about this and created different sounds ranging from birdlike to normal shouts. From time to time she would stop to take pictures of just about anything. Stores, signs, traffic lights, you name it.",
                 TS005: "When we got to a river bank near the bridge, Alpha slowed down and pointed to a spot with dozens of picnic mats scattered across a park. We sat down and began talking again. Alpha was holding her camera up.",
                 // Alpha Bad End
-                TB001: "",
+                TB001: "Alpha didn’t answer. She was staring into the distance, her eyes weren’t focused on anything.",
+                TB002: "As I said that, I realized that it was her that wasn’t with me anymore. I could still make out the dent she made sitting on the mat, but she was nowhere to be found. I checked out the mat she mentioned, in the grass laid a film roll. From what I could tell, it’s still usable. I grabbed it and put it in my pocket. However, Alpha was gone.",
+                TB003: "There was no way to explain what had happened. Why would she disappear right after realizing why she was here? Doesn’t that mean that there’s a reason I’m here, as well? I was still a bit shocked, so I rested for some time before I could think straight again. There was no point in mourning Alpha for too long. After all, I don’t know what happened to her.",
+                TB004: "But for now, I should head on.",
                 // Alpha Good End
                 TG001: "Alpha put in the film roll I gave her. She wound it up and then focused on me as I tried to strike a somewhat natural pose.",
                 TG002: "Alpha laughed as I said that, then I saw a flash of light. She took my picture while I was irritated about her remark.",
@@ -61,7 +64,8 @@ namespace CityOfHinnom {
                 T0019: "Sure did.",
                 T0020: "There’s a copy shop down the road where I can develop as many as I want. I have more or less the entire street for myself.",
                 T0021: "Oh, it’s not far. Just follow the street south and then walk up that slope where you come across a white car. None of the cars work around here so they always stay at the same spot. You can’t miss it from there.",
-                T0022: "Hmmm. This was the first place I found. The rich aroma that lies in the air makes me feel at home, you know. Of course I could find myself a nice home, maybe some millionaire mansion with a huge pool and a sixty inch TV. But when I sit down here and rest under the comforting orange ceiling lights, I don’t really wish to go anywhere else. Isn’t that why most humans are creatures of habit? You can go out and adventure any time, but at the end of the day you find peace in the place you feel most familiar with.",
+                T0022: "Hmmm. This was the first place I found. The rich aroma that lies in the air makes me feel at home, you know. Of course I could find myself a nice home, maybe some millionaire mansion with a huge pool and a sixty inch TV. But when I sit down here and rest under the comforting orange ceiling lights, I don’t really wish to go anywhere else.",
+                T0022contd: "Isn’t that why most humans are creatures of habit? You can go out and adventure any time, but at the end of the day you find peace in the place you feel most familiar with.",
                 T0023: "Well, tell me then. Why are you here?",
                 T0024: "No, I mean why are you here in this place? You must have woken up and found yourself in this strange city, am I right?",
                 T0025: "What’s the last date you remember?",
@@ -89,15 +93,10 @@ namespace CityOfHinnom {
                 TS009: "How about I take a picture of you?",
                 // Alpha Bad End
                 TB001: "I mean, I would take a picture. But my last film roll got used up after I snapped that bakery earlier.",
-                TB002: "",
-                TB003: "",
-                TB004: "",
-                TB005: "",
-                TB006: "",
-                TB007: "",
-                TB008: "",
-                TB009: "",
-                TB010: "",
+                TB002: "Just be natural. If you try holding some pose, you’ll always end up looking stiff.",
+                TB003: "Wait, that thing next to the mat over there…",
+                TB004: "I think I know why I’m here.",
+                TB005: "I’m so lonely.",
                 // Alpha Good End
                 TG001: "You look a bit like a dork right now.",
                 TG002: "That’s way better. Now you’re showing an authentic emotion instead of pausing for a good shot.",
@@ -155,16 +154,11 @@ namespace CityOfHinnom {
                 TS006: "Do you ever catch a break?",
                 TS007: "Sure, why not.",
                 // Alpha Bad End
-                TB001: "I mean, I would take a picture. But my last film roll got used up after I snapped that bakery earlier.",
-                TB002: "",
-                TB003: "",
-                TB004: "",
-                TB005: "",
-                TB006: "",
-                TB007: "",
-                TB008: "",
-                TB009: "",
-                TB010: "",
+                TB001: "I’m okay with that. I never know what to do when someone takes my picture.",
+                TB002: "I’m pretty sure I look stiff being natural as well.",
+                TB003: "Which one?",
+                TB004: "You do?",
+                TB005: "But I’m right with you-",
                 // Alpha Good End
                 TG001: "What’s that supposed to mean?",
                 TG002: "Well yeah, I don’t want to mess up the photograph.",
@@ -261,6 +255,7 @@ namespace CityOfHinnom {
         await ƒS.Speech.tell(characters.narrator, text.Narrator.T0009);
 
         await ƒS.Speech.tell(characters.alpha, text.Alpha.T0022);
+        await ƒS.Speech.tell(characters.alpha, text.Alpha.T0022contd);
         await ƒS.Speech.tell(characters.player, text.Player.T0022);
         await ƒS.Speech.tell(characters.alpha, text.Alpha.T0023);
         await ƒS.Speech.tell(characters.player, text.Player.T0023);
@@ -443,6 +438,23 @@ namespace CityOfHinnom {
                     dataForSave.alphaScore += 50;
                     dataForSave.totalScore += 50;
                     await ƒS.Speech.tell(characters.alpha, text.Alpha.TB001);
+                    await ƒS.Speech.tell(characters.player, text.Player.TB001);
+                    await ƒS.Speech.tell(characters.alpha, text.Alpha.TB002);
+                    await ƒS.Speech.tell(characters.player, text.Player.TB002);
+                    await ƒS.Speech.tell(characters.alpha, text.Alpha.TB003);
+                    await ƒS.Speech.tell(characters.player, text.Player.TB003);
+
+                    await ƒS.Speech.tell(characters.narrator, text.Narrator.TB001);
+
+                    await ƒS.Speech.tell(characters.alpha, text.Alpha.TB004);
+                    await ƒS.Speech.tell(characters.player, text.Player.TB004);
+                    await ƒS.Speech.tell(characters.alpha, text.Alpha.TB005);
+                    await ƒS.Speech.tell(characters.player, text.Player.TB005);
+
+                    await ƒS.Speech.tell(characters.narrator, text.Narrator.TB002);
+                    await ƒS.Speech.tell(characters.narrator, text.Narrator.TB003);
+                    await ƒS.Speech.tell(characters.narrator, text.Narrator.TB004);
+
                     ƒS.Sound.fade(sound.calm, 0, 0);
                     // Create 
                     ƒS.Sound.play(sound.page2, 1, false);
@@ -454,8 +466,6 @@ namespace CityOfHinnom {
                     dataForSave.ownsCameraRoll = true;
                     return "loop";
                 }
-
-                ƒS.Speech.clear();
                 break;
             case staywithAlphaChoice.answerLeave:
                 // Go to Scene 03

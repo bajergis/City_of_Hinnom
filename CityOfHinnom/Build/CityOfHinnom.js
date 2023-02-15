@@ -293,6 +293,7 @@ var CityOfHinnom;
         ownsIrisLetter2: false,
         ownsBookmark: false,
         ownsAlphaLetter2: false,
+        ownsLilyLetter2: false,
         ownsChildhoodPicture: false,
         alphaSkip: false,
         irisSkip: false,
@@ -311,7 +312,7 @@ var CityOfHinnom;
             origin: CityOfHinnom.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
                 angry: "",
-                happy: "Images/Characters/Alpha.png",
+                happy: "Images/Characters/Alpha1000px.png",
                 upset: ""
             }
         },
@@ -1002,7 +1003,7 @@ var CityOfHinnom;
                 await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.TH001);
                 await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.alpha, text.Alpha.TH002);
                 await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.TH002);
-                CityOfHinnom.ƒS.Character.animate(CityOfHinnom.characters.alpha, CityOfHinnom.characters.alpha.pose.happy, CityOfHinnom.disappearAnimation());
+                await CityOfHinnom.ƒS.Character.animate(CityOfHinnom.characters.alpha, CityOfHinnom.characters.alpha.pose.happy, CityOfHinnom.disappearAnimation());
                 CityOfHinnom.ƒS.Speech.clear();
                 break;
         }
@@ -1206,7 +1207,7 @@ var CityOfHinnom;
                 await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.player, "I know.");
                 await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.iris, "Well, it was nice to see you again, Player. If you figure anything out, I’ll be either here or in the library further down.");
                 await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.player, "I promise I’ll come back.");
-                CityOfHinnom.ƒS.Character.animate(CityOfHinnom.characters.iris, CityOfHinnom.characters.iris.pose.happy, CityOfHinnom.disappearAnimation());
+                await CityOfHinnom.ƒS.Character.animate(CityOfHinnom.characters.iris, CityOfHinnom.characters.iris.pose.happy, CityOfHinnom.disappearAnimation());
                 await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0016);
                 break;
             case staywithIrisChoice.answerStay:
@@ -1264,7 +1265,7 @@ var CityOfHinnom;
                     await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.iris, "More like a lucky charm.");
                     await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0027);
                     await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.iris, "I’ll start reading. If we don’t get through it in one sitting, we can pick up on it next time.");
-                    CityOfHinnom.ƒS.Character.animate(CityOfHinnom.characters.iris, CityOfHinnom.characters.iris.pose.happy, CityOfHinnom.disappearAnimation());
+                    await CityOfHinnom.ƒS.Character.animate(CityOfHinnom.characters.iris, CityOfHinnom.characters.iris.pose.happy, CityOfHinnom.disappearAnimation());
                     CityOfHinnom.ƒS.Sound.fade(CityOfHinnom.sound.calm, 0, 3);
                     //show iris reading book
                     // Novel Page
@@ -1316,7 +1317,7 @@ var CityOfHinnom;
                     await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.iris, "Well, no. But what if too much time passes and we forget where we stopped?");
                     await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.player, "Then we can read another book.");
                     await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0032);
-                    CityOfHinnom.ƒS.Character.animate(CityOfHinnom.characters.iris, CityOfHinnom.characters.iris.pose.happy, CityOfHinnom.disappearAnimation());
+                    await CityOfHinnom.ƒS.Character.animate(CityOfHinnom.characters.iris, CityOfHinnom.characters.iris.pose.happy, CityOfHinnom.disappearAnimation());
                     CityOfHinnom.ƒS.Sound.fade(CityOfHinnom.sound.calm, 0, 3);
                     // show iris reading
                     // Novel Page
@@ -1483,7 +1484,7 @@ var CityOfHinnom;
         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.player, "Who are you even? How do you know?");
         await CityOfHinnom.ƒS.Speech.tell("???", "I was here first, shouldn’t you be the one to introduce yourself before me?");
         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0006);
-        await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.player, "Alright, I'm" + CityOfHinnom.dataForSave.nameProtagonist);
+        await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.player, "Alright, I'm " + CityOfHinnom.dataForSave.nameProtagonist);
         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0007);
         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.lily, "Nice to meet you, " + CityOfHinnom.dataForSave.nameProtagonist + ". I’m Lily.");
         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.player, "So, Lily. If this place isn’t about burning for all of eternity, what else could it be about?");
@@ -1725,9 +1726,10 @@ var CityOfHinnom;
                             await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.player, "It was to me, as well.");
                             await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0041);
                             await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.lily, CityOfHinnom.dataForSave.nameProtagonist + ", I-");
+                            CityOfHinnom.ƒS.Character.animate(CityOfHinnom.characters.lily, CityOfHinnom.characters.lily.pose.happy, CityOfHinnom.disappearAnimation());
                             CityOfHinnom.dataForSave.irisScore += 50;
                             CityOfHinnom.dataForSave.totalScore += 50;
-                            CityOfHinnom.ƒS.Sound.fade(CityOfHinnom.sound.sad2, 0, 0);
+                            CityOfHinnom.ƒS.Sound.fade(CityOfHinnom.sound.sad2, 0, 1);
                             await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0042);
                             await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0043);
                             await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0044);
@@ -1736,6 +1738,9 @@ var CityOfHinnom;
                             CityOfHinnom.openLetter(CityOfHinnom.letters.LilyLetter2.background);
                             CityOfHinnom.ƒS.Text.print(" ");
                             CityOfHinnom.ƒS.Inventory.add(CityOfHinnom.items.lilyLetter2);
+                            CityOfHinnom.dataForSave.ownsLilyLetter2 = true;
+                            await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, "I couldn't take this. I hurried out of her apartment and returned to mine.");
+                            await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, "It was at that moment when bits of this world started making sense to me.");
                             return "scene07";
                         }
                 }
@@ -1781,16 +1786,20 @@ var CityOfHinnom;
                 T0013: "I was ready to find my own happiness. I must have been on my way already, because all I could think of right now was…",
             }
         };
-        await CityOfHinnom.ƒS.Location.show(CityOfHinnom.locations.CityStreetNight);
-        await CityOfHinnom.ƒS.update(CityOfHinnom.transitions.swirl.duration, CityOfHinnom.transitions.swirl.alpha, CityOfHinnom.transitions.swirl.edge);
-        CityOfHinnom.ƒS.Sound.play(CityOfHinnom.sound.terror2, 1, true);
-        await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0001);
-        await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0002);
-        await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0003);
+        if (CityOfHinnom.dataForSave.ownsLilyLetter2) {
+        }
+        else {
+            await CityOfHinnom.ƒS.Location.show(CityOfHinnom.locations.CityStreetNight);
+            await CityOfHinnom.ƒS.update(CityOfHinnom.transitions.swirl.duration, CityOfHinnom.transitions.swirl.alpha, CityOfHinnom.transitions.swirl.edge);
+            CityOfHinnom.ƒS.Sound.play(CityOfHinnom.sound.terror2, 1, true);
+            await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0001);
+            await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0002);
+            await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0003);
+        }
         await CityOfHinnom.ƒS.Location.show(CityOfHinnom.locations.OutsideApartment);
         await CityOfHinnom.ƒS.update(CityOfHinnom.transitions.fuzzy.duration, CityOfHinnom.transitions.fuzzy.alpha, CityOfHinnom.transitions.fuzzy.edge);
         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0004);
-        CityOfHinnom.ƒS.Sound.fade(CityOfHinnom.sound.terror1, 0, 2);
+        CityOfHinnom.ƒS.Sound.fade(CityOfHinnom.sound.terror2, 0, 2);
         await CityOfHinnom.ƒS.Location.show(CityOfHinnom.locations.InsideApartment);
         await CityOfHinnom.ƒS.update(CityOfHinnom.transitions.static.duration, CityOfHinnom.transitions.static.alpha, CityOfHinnom.transitions.static.edge);
         await CityOfHinnom.ƒS.Speech.tell(CityOfHinnom.characters.narrator, text.Narrator.T0005);

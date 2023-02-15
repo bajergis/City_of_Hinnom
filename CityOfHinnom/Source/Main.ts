@@ -321,7 +321,7 @@ namespace CityOfHinnom {
       origin: ƒS.ORIGIN.BOTTOMCENTER,
       pose: {
         angry: "",
-        happy: "Images/Characters/Alpha.png",
+        happy: "Images/Characters/Alpha1000px.png",
         upset: ""
       }
     },
