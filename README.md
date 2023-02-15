@@ -1,5 +1,13 @@
-# FUDGE_Story
-A FUDGE module for the easy development of interactive stories, visual novels and simple adventure games
+# Link zur fertigen und in Github-Pages lauffähigen Anwendung
+https://bajergis.github.io/City_of_Hinnom/CityOfHinnom/CityOfHinnom.html
+
+# Link zum Quellcode
+https://github.com/bajergis/City_of_Hinnom/tree/master/CityOfHinnom
+
+# Link zum Konzeptdokument
+https://github.com/bajergis/City_of_Hinnom/blob/master/Konzeption_Final.pdf
+
+# Archiv mit Konzeptdokument und Projektordner
 
 
 # Reference
