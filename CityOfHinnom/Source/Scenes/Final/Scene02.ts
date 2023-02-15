@@ -376,11 +376,10 @@ namespace CityOfHinnom {
                 await ƒS.Location.show(locations.CityStreetNight);
                 await ƒS.Character.hide(characters.alpha);
                 await ƒS.update(transitions.tv.duration, transitions.tv.alpha, transitions.tv.edge);
-
+                ƒS.Sound.play(sound.calm, 1, true);
                 await ƒS.Speech.tell(characters.narrator, text.Narrator.TS004);
 
                 await ƒS.Location.show(locations.AlphaGoodEnd);
-                ƒS.Sound.play(sound.calm, 1, true);
                 await ƒS.update(transitions.tv.duration, transitions.tv.alpha, transitions.tv.edge);
 
                 await ƒS.Speech.tell(characters.narrator, text.Alpha.TS009);
@@ -403,7 +402,7 @@ namespace CityOfHinnom {
                     await ƒS.Speech.tell(characters.alpha, text.Alpha.TG004);
                     await ƒS.Speech.tell(characters.player, text.Player.TG004);
                     await ƒS.Speech.tell(characters.alpha, text.Alpha.TG005);
-                    dataForSave.irisScore += 50;
+                    dataForSave.alphaScore += 50;
                     dataForSave.totalScore += 50;
 
                     await ƒS.Speech.tell(characters.narrator, text.Narrator.TG003);
@@ -431,7 +430,7 @@ namespace CityOfHinnom {
 
                     ƒS.Inventory.add(items.alphaLetter2);
                     dataForSave.ownsAlphaLetter2 = true;
-                    return "scene07";
+                    return "scene05";
 
                 } else {
                     //Bad
@@ -450,6 +449,11 @@ namespace CityOfHinnom {
                     await ƒS.Speech.tell(characters.player, text.Player.TB004);
                     await ƒS.Speech.tell(characters.alpha, text.Alpha.TB005);
                     await ƒS.Speech.tell(characters.player, text.Player.TB005);
+
+                    // make alpha disappear
+                    await ƒS.Location.show(locations.AlphaEmptyGoodEnd);
+                    ƒS.Sound.fade(sound.calm, 0, 0);
+                    await ƒS.update();
 
                     await ƒS.Speech.tell(characters.narrator, text.Narrator.TB002);
                     await ƒS.Speech.tell(characters.narrator, text.Narrator.TB003);

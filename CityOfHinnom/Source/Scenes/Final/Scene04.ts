@@ -250,6 +250,8 @@ namespace CityOfHinnom {
                 await ƒS.Speech.tell(characters.narrator, text.Narrator.T0023);
 
                 //show library
+                await ƒS.Location.show(locations.Library);
+                await ƒS.update(transitions.swirl.duration, transitions.swirl.alpha, transitions.swirl.edge);
 
                 await ƒS.Speech.tell(characters.iris, "I usually read in the back, there’s this nice sofa that’s just so comfortable, and it fits two people.");
                 await ƒS.Speech.tell(characters.player, "Do you know what you want to read?");
@@ -285,6 +287,8 @@ namespace CityOfHinnom {
                     ƒS.Sound.fade(sound.calm, 0, 3);
 
                     //show iris reading book
+                    await ƒS.Location.show(locations.Library);
+                    await ƒS.update(transitions.wipe.duration, transitions.wipe.alpha, transitions.wipe.edge);
 
                     // Novel Page
                     ƒS.Speech.hide();
@@ -339,7 +343,9 @@ namespace CityOfHinnom {
                     await ƒS.Character.animate(characters.iris, characters.iris.pose.happy, disappearAnimation());
                     ƒS.Sound.fade(sound.calm, 0, 3);
 
-                    // show iris reading
+                    //show iris reading book
+                    await ƒS.Location.show(locations.Library);
+                    await ƒS.update(transitions.wipe.duration, transitions.wipe.alpha, transitions.wipe.edge);
 
                     // Novel Page
                     ƒS.Speech.hide();
@@ -367,7 +373,6 @@ namespace CityOfHinnom {
 
                     await ƒS.Speech.tell(characters.narrator, text.Narrator.T0033);
 
-                    await ƒS.Character.animate(characters.iris, characters.iris.pose.happy, appearAnimation());
                     await ƒS.Speech.tell(characters.iris, "Hey, do you want to hear something odd? I think I remember why I’m here now. Something in this story reminded me of it.");
                     await ƒS.Speech.tell(characters.player, "Go on, tell me.");
                     ƒS.Sound.play(sound.sad1, 1, true);
@@ -377,12 +382,12 @@ namespace CityOfHinnom {
                     await ƒS.Speech.tell(characters.player, "So you’re saying we really are dead.");
                     await ƒS.Speech.tell(characters.iris, "That’s not all. I know why I’m in this place, specifically. I remember that there are things I regret, and this place is for me to come to terms with them. ");
                     await ƒS.Speech.tell(characters.player, "Like what?");
-                    await ƒS.Character.hide(characters.iris);
-
-                    await ƒS.Location.show(locations.IrisBookmark);
-                    await ƒS.update(transitions.ripple.duration, transitions.ripple.alpha, transitions.ripple.edge);
+                    await ƒS.Location.show(locations.AlphaEmptyGoodEnd);
+                    await ƒS.update();
 
                     await ƒS.Speech.tell(characters.narrator, text.Narrator.T0034);
+                    await ƒS.Location.show(locations.IrisBookmark);
+                    await ƒS.update(transitions.ripple.duration, transitions.ripple.alpha, transitions.ripple.edge);
                     await ƒS.Speech.tell(characters.narrator, text.Narrator.T0035);
                     await ƒS.Speech.tell(characters.narrator, text.Narrator.T0036);
                     await ƒS.Speech.tell(characters.narrator, text.Narrator.T0037);

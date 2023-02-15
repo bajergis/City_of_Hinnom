@@ -173,6 +173,18 @@ namespace CityOfHinnom {
       name: "The train station",
       background: "Images/Backgrounds/TrainStation.png"
     },
+    Library: {
+      name: "The library Iris lives at",
+      background: "Images/Backgrounds/Library.png"
+    },
+    LilyApartment: {
+      name: "Lily's Apartment",
+      background: "Images/Backgrounds/InsideApartmentLily.png"
+    },
+    IrisReadingBook: {
+      name: "IrisReadingBook",
+      background: "Images/Backgrounds/IrisReadingBook.png"
+    },
   };
 
   // **** ITEMS ****
@@ -251,27 +263,27 @@ namespace CityOfHinnom {
   export let letters = {
     AlphaLetter1: {
       name: "Alpha first letter",
-      background: "Images/Backgrounds/Letters/AlphaLetter1.png"
+      background: "Images/Items/AlphaLetter1.png"
     },
     AlphaLetter2: {
       name: "Alpha second letter",
-      background: "Images/Backgrounds/Letters/AlphaLetter2.png"
+      background: "Images/Items/AlphaLetter2.png"
     },
     IrisLetter1: {
       name: "Iris first letter",
-      background: "Images/Backgrounds/Letters/IrisLetter1.png"
+      background: "Images/Items/IrisLetter1.png"
     },
     IrisLetter2: {
       name: "Iris second letter",
-      background: "Images/Backgrounds/Letters/IrisLetter2.png"
+      background: "Images/Items/IrisLetter2.png"
     },
     LilyLetter1: {
       name: "Lily first letter",
-      background: "Images/Backgrounds/Letters/LilyLetter1.png"
+      background: "Images/Items/LilyLetter1.png"
     },
     LilyLetter2: {
       name: "Lily second letter",
-      background: "Images/Backgrounds/Letters/LilyLetter2.png"
+      background: "Images/Itemsi/LilyLetter2.png"
     },
   }
 
@@ -321,7 +333,7 @@ namespace CityOfHinnom {
       origin: ƒS.ORIGIN.BOTTOMCENTER,
       pose: {
         angry: "",
-        happy: "Images/Characters/Alpha1000px.png",
+        happy: "Images/Characters/Alpha.png",
         upset: ""
       }
     },
