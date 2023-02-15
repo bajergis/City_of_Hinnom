@@ -1336,7 +1336,7 @@ var CityOfHinnom;
                     CityOfHinnom.ƒS.Text.print(" ");
                     CityOfHinnom.ƒS.Inventory.add(CityOfHinnom.items.irisLetter2);
                     CityOfHinnom.dataForSave.ownsIrisLetter2 = true;
-                    return "scene07";
+                    return "scene05";
                 }
                 else {
                     // Bad End
