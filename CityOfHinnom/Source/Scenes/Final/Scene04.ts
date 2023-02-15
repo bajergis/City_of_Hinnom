@@ -287,7 +287,7 @@ namespace CityOfHinnom {
                     ƒS.Sound.fade(sound.calm, 0, 3);
 
                     //show iris reading book
-                    await ƒS.Location.show(locations.Library);
+                    await ƒS.Location.show(locations.IrisReadingBook);
                     await ƒS.update(transitions.wipe.duration, transitions.wipe.alpha, transitions.wipe.edge);
 
                     // Novel Page
@@ -344,7 +344,7 @@ namespace CityOfHinnom {
                     ƒS.Sound.fade(sound.calm, 0, 3);
 
                     //show iris reading book
-                    await ƒS.Location.show(locations.Library);
+                    await ƒS.Location.show(locations.IrisReadingBook);
                     await ƒS.update(transitions.wipe.duration, transitions.wipe.alpha, transitions.wipe.edge);
 
                     // Novel Page

@@ -161,6 +161,18 @@ declare namespace CityOfHinnom {
             name: string;
             background: string;
         };
+        Library: {
+            name: string;
+            background: string;
+        };
+        LilyApartment: {
+            name: string;
+            background: string;
+        };
+        IrisReadingBook: {
+            name: string;
+            background: string;
+        };
     };
     let items: {
         filmRoll: {

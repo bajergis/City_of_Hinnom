@@ -224,37 +224,37 @@ namespace CityOfHinnom {
     alphaLetter1: {
       name: "Alpha Letter",
       description: " A letter Alpha wrote me. She was lonely. <br\>",
-      image: "Images/Letters/AlphaLetter1.png",
+      image: "Images/Items/AlphaLetter1.png",
       static: true
     },
     irisLetter1: {
       name: "Iris Letter",
       description: " A letter Iris wrote me. It's mostly about her mother. <br\>",
-      image: "Images/Letters/IrisLetter1.png",
+      image: "Images/Items/IrisLetter1.png",
       static: true
     },
     lilyLetter1: {
       name: "Lily Letter",
       description: " A letter Lily left me. We used to know each other. <br\>",
-      image: "Images/Letters/LilyLetter1.png",
+      image: "Images/Items/LilyLetter1.png",
       static: true
     },
     alphaLetter2: {
       name: "Alpha Farewell",
       description: " I'm so happy you are the focus of my new photos. <br\>",
-      image: "Images/Letters/AlphaLetter2.png",
+      image: "Images/Items/AlphaLetter2.png",
       static: true
     },
     irisLetter2: {
       name: "Iris Farewell",
       description: " I want you to love me across the universe and back. <br\>",
-      image: "Images/Letters/IrisLetter2.png",
+      image: "Images/Items/IrisLetter2.png",
       static: true
     },
     lilyLetter2: {
       name: "Lily Farewell",
       description: " Let's make up for all the time lost. <br\>",
-      image: "Images/Letters/LilyLetter2.png",
+      image: "Images/Items/LilyLetter2.png",
       static: true
     },
 
@@ -263,27 +263,27 @@ namespace CityOfHinnom {
   export let letters = {
     AlphaLetter1: {
       name: "Alpha first letter",
-      background: "Images/Items/AlphaLetter1.png"
+      background: "Images/Backgrounds/Letters/AlphaLetter1.png"
     },
     AlphaLetter2: {
       name: "Alpha second letter",
-      background: "Images/Items/AlphaLetter2.png"
+      background: "Images/Backgrounds/Letters/AlphaLetter2.png"
     },
     IrisLetter1: {
       name: "Iris first letter",
-      background: "Images/Items/IrisLetter1.png"
+      background: "Images/Backgrounds/Letters/IrisLetter1.png"
     },
     IrisLetter2: {
       name: "Iris second letter",
-      background: "Images/Items/IrisLetter2.png"
+      background: "Images/Backgrounds/Letters/IrisLetter2.png"
     },
     LilyLetter1: {
       name: "Lily first letter",
-      background: "Images/Items/LilyLetter1.png"
+      background: "Images/Backgrounds/Letters/LilyLetter1.png"
     },
     LilyLetter2: {
       name: "Lily second letter",
-      background: "Images/Itemsi/LilyLetter2.png"
+      background: "Images/Backgrounds/Letters/LilyLetter2.png"
     },
   }
 
