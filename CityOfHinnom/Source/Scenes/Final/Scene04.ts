@@ -331,7 +331,7 @@ namespace CityOfHinnom {
 
                     ƒS.Inventory.add(items.irisLetter2);
                     dataForSave.ownsIrisLetter2 = true;
-                    return "scene07";
+                    return "scene05";
 
                 } else {
                     // Bad End
